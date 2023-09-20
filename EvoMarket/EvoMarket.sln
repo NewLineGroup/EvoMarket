@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{CAC70226-C7B0-40FD-A730-AFDEB5140F9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain\Domain.csproj", "{E155B0BF-F4D4-4870-A4DB-F7078517D0B6}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D5CC42FC-A1E1-4FDB-B43D-CD4D916DD12B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastructures", "{D283242C-515D-4898-BE02-C57F10D26EF9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{9690AC74-1D69-4402-8392-9B7A3CA3AF5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{6E1728EA-8510-466C-889D-8855B9CBBA7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,15 +19,15 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 
 
-		{E155B0BF-F4D4-4870-A4DB-F7078517D0B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E155B0BF-F4D4-4870-A4DB-F7078517D0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E155B0BF-F4D4-4870-A4DB-F7078517D0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E155B0BF-F4D4-4870-A4DB-F7078517D0B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E1728EA-8510-466C-889D-8855B9CBBA7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E1728EA-8510-466C-889D-8855B9CBBA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E1728EA-8510-466C-889D-8855B9CBBA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E1728EA-8510-466C-889D-8855B9CBBA7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 
 
 
-		{E155B0BF-F4D4-4870-A4DB-F7078517D0B6} = {CAC70226-C7B0-40FD-A730-AFDEB5140F9E}
+		{6E1728EA-8510-466C-889D-8855B9CBBA7A} = {CAC70226-C7B0-40FD-A730-AFDEB5140F9E}
 	EndGlobalSection
 EndGlobal
