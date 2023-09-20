@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain.Entities.Payment;
 
 [Table("transactions")]
-public class Transaction
+public class Transaction : ModelBase
 {
     [Required]
     [Column("account_id")]
