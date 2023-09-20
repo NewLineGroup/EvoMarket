@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\EvoMarket.WebCore\EvoMarket.WebCore.csproj" />
+    </ItemGroup>
+
 </Project>
