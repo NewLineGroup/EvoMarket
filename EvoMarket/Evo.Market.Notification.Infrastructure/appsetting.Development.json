@@ -1,0 +1,11 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnectionString" : "Host=localhost; Port=5432; Database=tgbot; username=postgres; password=Ab4466195"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}
