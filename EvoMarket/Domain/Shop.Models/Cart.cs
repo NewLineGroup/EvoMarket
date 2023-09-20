@@ -7,6 +7,7 @@ public class Cart:ModelBase
 {
     [Column("quantity")]
     public int Quantity { get; set; }
+    
     [Column("price")]
     public decimal Price { get; set; }
 }
