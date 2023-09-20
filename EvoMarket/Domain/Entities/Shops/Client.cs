@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Shop.Models;
+namespace Domain.Entities.Shops;
 
 [Table("clients",Schema = "shop")]
 public class Client : ModelBase

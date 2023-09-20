@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices;
 
-namespace Domain.Shop.Models;
+namespace Domain.Entities.Shops;
 
 [Table("categories",Schema = "shop")]
 public class Category:ModelBase

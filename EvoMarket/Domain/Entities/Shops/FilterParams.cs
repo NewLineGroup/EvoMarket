@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Shop.Models;
+namespace Domain.Entities.Shops;
 
 public class FilterParams:ModelBase
 {
