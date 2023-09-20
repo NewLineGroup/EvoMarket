@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Shop.Models;
 
 namespace Domain.Payment.Models;
 
@@ -7,10 +8,15 @@ namespace Domain.Payment.Models;
 public class ClientAccount :  ModelBase
 {
     [Required]
-    [Column("client_id")]
-    public long ClientId { get; set; }
     [Column("balance")]
     public decimal Balance { get; set; }
     [Column("is_freeze")]
     public bool IsFreeze { get; set; }
+    [Column("client_id")]
+    public long ClientId { get; set; }
+
+    [NotMapped]
+    public Client Client { get; set; }
+    [NotMapped]
+    public ICollection<Transactions> Transactions { get; set; }
 }
