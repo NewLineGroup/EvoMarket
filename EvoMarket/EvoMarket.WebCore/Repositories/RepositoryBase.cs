@@ -6,7 +6,7 @@ namespace EvoMarket.WebCore.Repositories;
 
 public class RepositoryBase<T> : IRepositoryBase<T> where T : ModelBase
 {
-    public readonly DbContext _context;
+    private readonly DbContext _context;
 
     public RepositoryBase(DbContext context)
     {
