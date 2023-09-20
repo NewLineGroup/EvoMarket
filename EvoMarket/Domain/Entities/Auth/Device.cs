@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Entities.AuthModels;
-[Table("devices")]
+namespace Domain.Entities.Auth;
 
+[Table("devices")]
 public class Device:ModelBase
 {
     [Required]
