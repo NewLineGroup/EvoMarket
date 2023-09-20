@@ -4,7 +4,7 @@ using EvoMarket.WebCore.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Shop.Interfaces;
 
-namespace Shop.Reositories;
+namespace Shop.Repositories;
 
 public class ClientRepository:RepositoryBase<Client>,IClientRepository
 {
