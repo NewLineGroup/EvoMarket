@@ -21,4 +21,5 @@ public class Product:ModelBase
     public decimal? DiscountPrice { get; set; }
     [Column("category_id")]
     public int CategoryId { get; set; }
+    
 }
