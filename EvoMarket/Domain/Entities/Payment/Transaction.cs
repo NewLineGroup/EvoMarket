@@ -18,6 +18,6 @@ public class Transaction : ModelBase
     public long AccountId { get; set; }
 
     [NotMapped]
-    public ICollection<ClientAccount> Account { get; set; }
+    public ClientAccount Account { get; set; }
     
 }

@@ -18,4 +18,6 @@ public class ClientAccount : ModelBase
 
     [NotMapped]
     public Client Client { get; set; }
+
+    public ICollection<Transaction> Transactions { get; set; }
 }
