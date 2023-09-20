@@ -17,7 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Infrastructure", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Shop.Infrastructures", "EvoMarket.Shop.Infrastructures\EvoMarket.Shop.Infrastructures.csproj", "{CC4D396E-9B9E-411D-95BF-B91156F52715}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo.Market.Notification.Infrastructure", "Evo.Market.Notification.Infrastructure\Evo.Market.Notification.Infrastructure.csproj", "{AA95AC67-5E32-45CE-9069-9BB5AC4770A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Notification.Infrastructure", "Evo.Market.Notification.Infrastructure\EvoMarket.Notification.Infrastructure.csproj", "{AA95AC67-5E32-45CE-9069-9BB5AC4770A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Notification.Service", "EvoMarket.Notification.Service\EvoMarket.Notification.Service.csproj", "{B7BE2926-A759-4665-98A2-E99F1B41E43A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{AA95AC67-5E32-45CE-9069-9BB5AC4770A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA95AC67-5E32-45CE-9069-9BB5AC4770A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA95AC67-5E32-45CE-9069-9BB5AC4770A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7BE2926-A759-4665-98A2-E99F1B41E43A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7BE2926-A759-4665-98A2-E99F1B41E43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7BE2926-A759-4665-98A2-E99F1B41E43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7BE2926-A759-4665-98A2-E99F1B41E43A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 
@@ -57,5 +63,6 @@ Global
 		{73E05E9F-F740-4BE4-BF19-E1CF8D8BADEC} = {D283242C-515D-4898-BE02-C57F10D26EF9}
 		{CC4D396E-9B9E-411D-95BF-B91156F52715} = {D283242C-515D-4898-BE02-C57F10D26EF9}
 		{AA95AC67-5E32-45CE-9069-9BB5AC4770A3} = {D283242C-515D-4898-BE02-C57F10D26EF9}
+		{B7BE2926-A759-4665-98A2-E99F1B41E43A} = {D5CC42FC-A1E1-4FDB-B43D-CD4D916DD12B}
 	EndGlobalSection
 EndGlobal
