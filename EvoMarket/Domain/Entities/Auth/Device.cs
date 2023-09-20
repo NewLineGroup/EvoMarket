@@ -2,8 +2,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Auth;
-[Table("devices")]
 
+[Table("devices")]
 public class Device:ModelBase
 {
     [Required]
