@@ -5,7 +5,7 @@ namespace EvoMarket.Shop.Infrastructure;
 
 
 [Table("product",Schema = "shop")]
-public class Product:ModelBase
+public class Class1
 {
     [Column("title")]
     public string Title { get; set; }

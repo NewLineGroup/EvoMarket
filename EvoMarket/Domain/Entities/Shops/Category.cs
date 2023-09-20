@@ -12,7 +12,7 @@ public class Category:ModelBase
     public string ImageUrl { get; set; }
     [Column("category_filters")]
     public CategoryFilters CategoryFilters { get; set; }
-    
-    
+
+
 }
 
