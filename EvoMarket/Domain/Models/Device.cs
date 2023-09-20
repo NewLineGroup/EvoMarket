@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace OnlineShop.Domain.Models;
+
 [Table("user_devices")]
 public class Device:ModelBase
 {
