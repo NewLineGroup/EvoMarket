@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Entities.Shops;
 
 namespace Domain.Entities.Notification;
 
@@ -8,8 +9,8 @@ public class ClientNotifications : ModelBase
     [Column("client_id")]
     public int ClientId { get; set; }
     
-    // [NotMapped]
-    //public Client Client { get; set; }
+    [NotMapped]
+    public Client Client { get; set; }
     
     [Column("message_data")]
     public DateTime MessageData { get; set; }
