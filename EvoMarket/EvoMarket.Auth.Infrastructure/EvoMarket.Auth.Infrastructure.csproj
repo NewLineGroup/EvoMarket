@@ -10,4 +10,5 @@
       <ProjectReference Include="..\EvoMarket.WebCore\EvoMarket.WebCore.csproj" />
     </ItemGroup>
 
+
 </Project>
