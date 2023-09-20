@@ -3,7 +3,7 @@ using EvoMarket.WebCore.Interfaces;
 
 namespace Shop.Interfaces;
 
-public interface ICategoryRepository: IRepositoryBase<Category>
+public interface ICategoryRepository : IRepositoryBase<Category>
 {
     
 }
