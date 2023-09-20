@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.WebCore", "EvoMar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Infrastructure", "Payment.Infrastructure\Payment.Infrastructure.csproj", "{73E05E9F-F740-4BE4-BF19-E1CF8D8BADEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop", "Shop\Shop.csproj", "{CC4D396E-9B9E-411D-95BF-B91156F52715}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Shop.Infrastructures", "EvoMarket.Shop.Infrastructures\EvoMarket.Shop.Infrastructures.csproj", "{CC4D396E-9B9E-411D-95BF-B91156F52715}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
