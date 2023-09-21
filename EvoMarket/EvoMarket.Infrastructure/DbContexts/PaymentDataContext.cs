@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EvoMarket.Payment.Infrastructure.PaymentDataContext;
 
-public class PaymentDbContext : DbContext
+public class PaymentDataContext : DbContext
 {
-    public PaymentDbContext()
+    public PaymentDataContext()
     {
         
     }
-    public PaymentDbContext(DbContextOptions<PaymentDbContext> options)
+    public PaymentDataContext(DbContextOptions<PaymentDataContext> options)
         : base(options)
     {
     }

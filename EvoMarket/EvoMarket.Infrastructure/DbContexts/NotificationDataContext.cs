@@ -3,16 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EvoMarket.Notification.Infrastructures.DataContext;
 
-public class DataContext : DbContext
+public class NotificationDataContext : DbContext
 {
     public DbSet<ClientNotifications> ClientNotifications { get; set; }
 
-    public DataContext()
+    public NotificationDataContext()
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
 
-    public DataContext(DbContextOptions dbContextOptions): base(dbContextOptions)
+    public NotificationDataContext(DbContextOptions dbContextOptions): base(dbContextOptions)
     {
         
     }

@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Shop;
 
-public class DataContext:DbContext
+public class ShopDataContext:DbContext
 {
     public DbSet<Cart> Carts { get; set; }
     public DbSet<Client> Clients { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
 
-    public DataContext(DbContextOptions<DataContext>options):base(options)
+    public ShopDataContext(DbContextOptions<ShopDataContext>options):base(options)
     {
         
     }
