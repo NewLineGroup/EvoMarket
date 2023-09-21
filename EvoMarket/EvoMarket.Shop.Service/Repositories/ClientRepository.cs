@@ -1,5 +1,5 @@
 using Domain.Entities.Shops;
-using EvoMarket.Infrastructures.DbContexts;
+using EvoMarket.Infrastructure.DbContexts;
 using EvoMarket.WebCore.Interfaces;
 using EvoMarket.WebCore.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +9,7 @@ namespace Shop.Repositories;
 
 public class ClientRepository:RepositoryBase<Client>,IClientRepository
 {
-    public ClientRepository(ShopDataContext context) : base(context)
+    public ClientRepository(DataContext context) : base(context)
     {
     }
 }

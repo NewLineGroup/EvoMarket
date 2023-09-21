@@ -1,6 +1,6 @@
 using Domain.Dto.Payment.TransactionDto;
 using Domain.Entities.Payment;
-using EvoMarket.Infrastructures.DbContexts;
+using EvoMarket.Infrastructure.DbContexts;
 using EvoMarket.Payment.Infrastructure.Intercafes;
 
 namespace EvoMarket.Payment.Service.Service;
@@ -9,9 +9,9 @@ public class TransactionService
 {
     private readonly ITransactionRepository _transactionRepository;
     private readonly IClientAccountRepository _clientAccountRepository;
-    private readonly PaymentDataContext _context;
+    private readonly DataContext _context;
 
-    public TransactionService(ITransactionRepository transactionRepository,IClientAccountRepository clientAccountRepository, PaymentDataContext context)
+    public TransactionService(ITransactionRepository transactionRepository,IClientAccountRepository clientAccountRepository, DataContext context)
     {
         _transactionRepository = transactionRepository;
         _clientAccountRepository = clientAccountRepository;
