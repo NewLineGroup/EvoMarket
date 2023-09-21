@@ -1,7 +1,7 @@
 using Domain.Entities.Notification;
 using Microsoft.EntityFrameworkCore;
 
-namespace EvoMarket.Notification.Infrastructures.DataContext;
+namespace EvoMarket.Infrastructures.DbContexts;
 
 public class NotificationDataContext : DbContext
 {

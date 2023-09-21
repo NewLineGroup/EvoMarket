@@ -1,5 +1,6 @@
+
+using EvoMarket.Infrastructures.DbContexts;
 using Microsoft.EntityFrameworkCore;
-using Shop;
 using Shop.Interfaces;
 using Shop.Repositories;
 
@@ -9,7 +10,7 @@ public static class ConfigureExtension
 {
     public static void ConfigureDbContexts(this IServiceCollection serviceCollection, ConfigurationManager configurationManager)
     {
-        serviceCollection.AddDbContext<DataContext>(optionsBuilder =>
+        serviceCollection.AddDbContext<ShopDataContext>(optionsBuilder =>
         {
             optionsBuilder
                 .UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));

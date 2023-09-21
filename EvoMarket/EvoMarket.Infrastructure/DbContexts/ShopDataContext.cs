@@ -1,7 +1,7 @@
 using Domain.Entities.Shops;
 using Microsoft.EntityFrameworkCore;
 
-namespace Shop;
+namespace EvoMarket.Infrastructures.DbContexts;
 
 public class ShopDataContext:DbContext
 {

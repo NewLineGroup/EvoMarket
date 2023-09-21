@@ -6,14 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+
     <ItemGroup>
       <ProjectReference Include="..\EvoMarket.WebCore\EvoMarket.WebCore.csproj" />
-    </ItemGroup>
-
-
-
-    <ItemGroup>
-      <Folder Include="DataContext\" />
     </ItemGroup>
 
 </Project>

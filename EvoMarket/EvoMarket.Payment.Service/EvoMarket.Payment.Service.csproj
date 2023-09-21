@@ -6,8 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+
     <ItemGroup>
-      <ProjectReference Include="..\EvoMarket.Payment.Infrastructure\EvoMarket.Payment.Infrastructure.csproj" />
+      <ProjectReference Include="..\EvoMarket.Infrastructure\EvoMarket.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

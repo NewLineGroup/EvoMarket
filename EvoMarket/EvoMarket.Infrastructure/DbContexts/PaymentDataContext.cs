@@ -2,7 +2,7 @@ using System.Reflection;
 using Domain.Entities.Payment;
 using Microsoft.EntityFrameworkCore;
 
-namespace EvoMarket.Payment.Infrastructure.PaymentDataContext;
+namespace EvoMarket.Infrastructures.DbContexts;
 
 public class PaymentDataContext : DbContext
 {
