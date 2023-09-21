@@ -14,5 +14,6 @@ public class Client : ModelBase
     [Column("rate")] public double Rate { get; set; }
     [Column("age")] public int Age { get; set; }
 
+    [NotMapped]
     public ICollection<ClientAccount> ClientAccounts { get; set; }
 }

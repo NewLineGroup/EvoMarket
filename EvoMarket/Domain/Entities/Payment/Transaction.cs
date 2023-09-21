@@ -3,10 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Payment;
 
-[Table("transactions")]
+[Table("transactions" , Schema = "payment") ]
 public class Transaction : ModelBase
 {
-    
     [Column("amount")]
     public decimal Amount { get; set; }
     [Column("date_time")]

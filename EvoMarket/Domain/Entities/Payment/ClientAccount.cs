@@ -4,7 +4,7 @@ using Domain.Entities.Shops;
 
 namespace Domain.Entities.Payment;
 
-[Table("client_account")]
+[Table("client_account" , Schema = "payment")]
 public class ClientAccount : ModelBase
 {
    
