@@ -12,7 +12,7 @@ public class ClientRepository:RepositoryBase<Client>,IClientRepository
     {
     }
 
-    public async ValueTask<long> CreateDefaultClient()
+    public async ValueTask<long> GetNewClientId()
     {
         Client client = await base.CreatAsync(
             new Client());

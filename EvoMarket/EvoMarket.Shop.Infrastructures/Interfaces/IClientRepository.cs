@@ -5,6 +5,6 @@ namespace Shop.Interfaces;
 
 public interface IClientRepository:IRepositoryBase<Client>
 {
-    public ValueTask<long> CreateDefaultClient();
+    public ValueTask<long> GetNewClientId();
 
 }
