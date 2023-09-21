@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain.Entities.Auth;
 
     [Table("users")]
-    public class User:Auditable
+    public class User:AuditableModelBase
     {
         [Required]
         [Column("email")]
