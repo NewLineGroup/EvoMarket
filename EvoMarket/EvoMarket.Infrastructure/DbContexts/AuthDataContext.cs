@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EvoMarket.Auth.Infrastructure.DataContext;
 
-public class DataContext : DbContext
+public class AuthDataContext : DbContext
 {
     public DbSet<Cart> Carts { get; set; }
     public DbSet<Category> Categories { get; set; }
@@ -13,7 +13,7 @@ public class DataContext : DbContext
     public DbSet<FilterParamValue> FilterParamValues { get; set; }
     public DbSet<Product> Products { get; set; }
 
-    public DataContext()
+    public AuthDataContext()
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
