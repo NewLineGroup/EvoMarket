@@ -39,17 +39,17 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("client_id");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("create_date");
+                        .HasColumnName("created_at");
 
                     b.Property<bool>("IsFreeze")
                         .HasColumnType("boolean")
                         .HasColumnName("is_freeze");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("update_date");
+                        .HasColumnName("updated_at");
 
                     b.HasKey("Id");
 
@@ -75,9 +75,9 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("numeric")
                         .HasColumnName("amount");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("create_date");
+                        .HasColumnName("created_at");
 
                     b.Property<bool>("Success")
                         .HasColumnType("boolean")
@@ -87,9 +87,9 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_time");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("update_date");
+                        .HasColumnName("updated_at");
 
                     b.HasKey("Id");
 
@@ -116,9 +116,9 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("age");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("create_date");
+                        .HasColumnName("created_at");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -143,9 +143,9 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("double precision")
                         .HasColumnName("rate");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("update_date");
+                        .HasColumnName("updated_at");
 
                     b.HasKey("Id");
 

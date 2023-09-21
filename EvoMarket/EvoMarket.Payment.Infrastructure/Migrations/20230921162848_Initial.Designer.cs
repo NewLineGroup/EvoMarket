@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EvoMarket.Payment.Infrastructure.Migrations
 {
     [DbContext(typeof(PaymentDbContext))]
-    [Migration("20230921151648_Initil")]
-    partial class Initil
+    [Migration("20230921162848_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,17 +42,17 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("client_id");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("create_date");
+                        .HasColumnName("created_at");
 
                     b.Property<bool>("IsFreeze")
                         .HasColumnType("boolean")
                         .HasColumnName("is_freeze");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("update_date");
+                        .HasColumnName("updated_at");
 
                     b.HasKey("Id");
 
@@ -78,9 +78,9 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("numeric")
                         .HasColumnName("amount");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("create_date");
+                        .HasColumnName("created_at");
 
                     b.Property<bool>("Success")
                         .HasColumnType("boolean")
@@ -90,9 +90,9 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_time");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("update_date");
+                        .HasColumnName("updated_at");
 
                     b.HasKey("Id");
 
@@ -119,9 +119,9 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("age");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("create_date");
+                        .HasColumnName("created_at");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -146,9 +146,9 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                         .HasColumnType("double precision")
                         .HasColumnName("rate");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("update_date");
+                        .HasColumnName("updated_at");
 
                     b.HasKey("Id");
 

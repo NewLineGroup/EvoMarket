@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EvoMarket.Payment.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Initil : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,8 +32,8 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                     profile_image = table.Column<string>(type: "text", nullable: true),
                     rate = table.Column<double>(type: "double precision", nullable: false),
                     age = table.Column<int>(type: "integer", nullable: false),
-                    create_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    update_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,8 +50,8 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                     balance = table.Column<decimal>(type: "numeric", nullable: false),
                     is_freeze = table.Column<bool>(type: "boolean", nullable: false),
                     client_id = table.Column<long>(type: "bigint", nullable: false),
-                    create_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    update_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,8 +76,8 @@ namespace EvoMarket.Payment.Infrastructure.Migrations
                     date_time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     success = table.Column<bool>(type: "boolean", nullable: false),
                     account_id = table.Column<long>(type: "bigint", nullable: false),
-                    create_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    update_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
