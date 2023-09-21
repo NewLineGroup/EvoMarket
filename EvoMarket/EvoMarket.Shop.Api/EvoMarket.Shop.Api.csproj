@@ -15,4 +15,9 @@
       <Folder Include="Controllers\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\EvoMarket.Auth.Infrastructure\EvoMarket.Auth.Infrastructure.csproj" />
+      <ProjectReference Include="..\EvoMarket.Shop.Infrastructures\EvoMarket.Shop.Infrastructures.csproj" />
+    </ItemGroup>
+
 </Project>
