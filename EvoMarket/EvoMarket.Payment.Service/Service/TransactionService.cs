@@ -1,3 +1,4 @@
+using Domain.Dto.Payment.TransactionDto;
 using Domain.Entities.Payment;
 using EvoMarket.Payment.Infrastructure.Intercafes;
 using EvoMarket.Payment.Infrastructure.PaymentDataContext;
@@ -19,25 +20,27 @@ public class TransactionService
     }
 
 
-    public async ValueTask<Transaction> Transaction(long clientId, decimal money, decimal foiz)
+    public async ValueTask<TransactionUpdateDto> Transaction(TransactionCreateDto transactionCreateDto)
     {
         var result = new Transaction()
         {
             Time = DateTime.Now
         };
-        using (var transaction = await _context.Database.BeginTransactionAsync())
+        var resultDto = new TransactionUpdateDto()
+        {
+            Time = result.Time
+        };
+        await using(var transaction = await _context.Database.BeginTransactionAsync())
         {
             try
             {
-
-                
-                if (money <= 0 || foiz < 0)
+                if (transactionCreateDto.Money <= 0)
                 {
                     result.Success = false;
-                    throw new Exception("Money or foiz can be negative");
+                    throw new Exception("Money  can be negative");
                 }
 
-                var clientAccount = await _clientAccountRepository.GetByIdAsync(clientId);
+                var clientAccount = await _clientAccountRepository.GetByIdAsync(transactionCreateDto.ClientId);
 
                 if (clientAccount is null)
                 {
@@ -46,8 +49,8 @@ public class TransactionService
                 }
 
                 decimal balance = clientAccount.Balance;
-
-                if (balance < money * foiz)
+                decimal money = transactionCreateDto.Money*(decimal)1.08;
+                if (balance <  money)
                 {
                     result.Success = false;
                     result.Account = clientAccount;
@@ -57,27 +60,25 @@ public class TransactionService
 
                 }
 
-                clientAccount.Balance -= money * foiz;
-
+                clientAccount.Balance -= money;
+                
                 await _clientAccountRepository.UpdateAsync(clientAccount);
 
                 result.AccountId = clientAccount.Id;
                 result.Account = clientAccount;
-                result.Amount = money * foiz;
+                result.Amount = money;
                 result.Success = true;
-
-                await _transactionRepository.UpdateAsync(result);
-
+                await _transactionRepository.CreatAsync(result);
                 await _context.Database.CommitTransactionAsync();
-
-                return result;
-
+                
+                return resultDto;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
                 await _context.Database.RollbackTransactionAsync();
-                return result;
+                resultDto.Success = false;
+                resultDto.Amount = result.Amount;
+                return resultDto;
             }
             
         }
