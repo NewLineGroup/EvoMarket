@@ -11,5 +11,10 @@ public class DeviceRepository:RepositoryBase<Device>,IDeviceRepository
     public DeviceRepository(DbContext context) : base(context)
     {
     }
-    
+
+    public ValueTask<List<Device>> GetUserDevices(int userId)
+    {
+        var devices = GetAllAsync().Result.ToList();
+        return ValueTask.FromResult(devices.Where(device => device.Id == userId).ToList());
+    }
 }
