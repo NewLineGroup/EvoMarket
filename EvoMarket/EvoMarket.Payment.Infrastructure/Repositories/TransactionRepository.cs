@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EvoMarket.Payment.Infrastructure.PaymentRepositories;
 
-public class TransactionRepository : RepositoryBase<Transaction> , ITransactionRepository
+public class TransactionRepository : RepositoryBase<Transaction>, ITransactionRepository
 {
     public TransactionRepository(PaymentDbContext context)
         : base(context)

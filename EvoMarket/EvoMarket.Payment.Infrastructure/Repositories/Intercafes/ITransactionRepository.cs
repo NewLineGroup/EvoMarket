@@ -3,7 +3,6 @@ using EvoMarket.WebCore.Interfaces;
 
 namespace EvoMarket.Payment.Infrastructure.Intercafes;
 
-public interface IClientAccountRepository: IRepositoryBase<ClientAccount>
+public interface ITransactionRepository : IRepositoryBase<Transaction>
 {
-    
 }
