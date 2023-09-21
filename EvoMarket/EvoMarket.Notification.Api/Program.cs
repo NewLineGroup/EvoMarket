@@ -1,8 +1,18 @@
+using EvoMarket.Notification.Infrastructures.DataContext;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options
+        .UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString"));
+    
+});
 
-builder.Host.ConfigureHostConfiguration(configurationBuilder =>
+
+    builder.Host.ConfigureHostConfiguration(configurationBuilder =>
 {
     configurationBuilder.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true,
         reloadOnChange: true);

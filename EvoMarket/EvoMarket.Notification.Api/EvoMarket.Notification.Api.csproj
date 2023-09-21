@@ -22,4 +22,8 @@
       <Folder Include="Controllers" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\EvoMarket.Notification.Services\EvoMarket.Notification.Services.csproj" />
+    </ItemGroup>
+
 </Project>

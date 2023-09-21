@@ -6,26 +6,36 @@ namespace EvoMarket.Notification.Services.Services;
 
 public class NotificationService : INotificationService
 {
-    public async Task<string> SendMessageToEmail(string email, string text)
+    private readonly SmtpClient client;
+
+    public NotificationService(SmtpClient smtpClient)
     {
-        {
-             var smtpClient = new SmtpClient("smtp.gmail.com") 
-            { Port = 587, Credentials = new NetworkCredential("evomarket777@gmail.com", "hcsm ymjx iyhf hgxm"),
-                EnableSsl = true, }; smtpClient. Send("evomarket777@gmail.com", email, "Notifications", text);
-            return text;
-        }
+        client = smtpClient;
+    }
+    public async Task SendMail(string addressTo,  string mailSubject, string mailBody)
+    {
+        string addressFrom = "evomarket777@gmail.com";
+        
+        NetworkCredential myCredential = new NetworkCredential("evomarket777@gmail.com", "hcsm ymjx iyhf hgxm");
+
+        
+        client.Host = "99.99.127.233";
+        client.Port = 417;
+        client.DeliveryMethod = SmtpDeliveryMethod.Network;
+        client.UseDefaultCredentials = false;
+        client.Credentials = myCredential;
+        client.EnableSsl = true;
+
+        MailAddress from = new MailAddress(addressFrom);
+        MailAddress to = new MailAddress(addressTo);
+        MailMessage message = new MailMessage(from, to);
+        message.Body = mailBody;
+        message.BodyEncoding = System.Text.Encoding.UTF8;
+        message.Subject = mailSubject;
+        message.SubjectEncoding = System.Text.Encoding.UTF8;
+        client.Send(message);
+        
     }
 
-    public async Task<string> CheckEmail(string email)
-    {
-        {
-               string verificationCode = new Random().Next(100000, 999999).ToString();
-               string messageToEmail = @"You log into Evo Market via Evo ID.
-       Your verification code:" + verificationCode + "Please do not share this code with anyone.";
-               var smtpClient = new SmtpClient("smtp.gmail.com") 
-               { Port = 587, Credentials = new NetworkCredential("evomarket777@gmail.com", "hcsm ymjx iyhf hgxm"),
-                   EnableSsl = true, }; smtpClient. Send("evomarket777@gmail.com", email, "verification code", messageToEmail);
-               return verificationCode;
-        }
-    }
+    
 }

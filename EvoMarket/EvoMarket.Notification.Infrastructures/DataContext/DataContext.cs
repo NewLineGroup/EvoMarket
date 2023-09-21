@@ -17,15 +17,7 @@ public class DataContext : DbContext
         
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.
-            UseLazyLoadingProxies();
-        optionsBuilder.UseNpgsql("Host=localhost; Port=5432; Database=postgres; username=postgres; password=Ab4466195"
-            );
-        base.OnConfiguring(optionsBuilder);
-        
-            }
+  
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
