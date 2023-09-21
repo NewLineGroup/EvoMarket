@@ -21,7 +21,7 @@ public class NotificationDataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("evo_market");
+        modelBuilder.HasDefaultSchema("notification");
 
         modelBuilder.Entity<ClientNotifications>()
             .HasIndex(x => x.Received);
