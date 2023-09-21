@@ -8,7 +8,7 @@ namespace Shop.Repositories;
 
 public class ClientRepository:RepositoryBase<Client>,IClientRepository
 {
-    public ClientRepository(DbContext context) : base(context)
+    public ClientRepository(DataContext context) : base(context)
     {
     }
 }
