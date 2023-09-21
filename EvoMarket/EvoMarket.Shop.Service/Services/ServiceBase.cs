@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Entities.Shops;
 using EvoMarket.Shop.Service.Interfaces;
 using EvoMarket.WebCore.Interfaces;
 using EvoMarket.WebCore.Repositories;
@@ -13,4 +14,5 @@ public class ServiceBase<T> : IServiceBase<T> where T : ModelBase
     {
         _repositoryBase = repositoryBase;
     }
+    
 }
