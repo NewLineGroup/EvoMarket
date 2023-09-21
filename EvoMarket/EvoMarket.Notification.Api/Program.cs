@@ -1,10 +1,10 @@
-using EvoMarket.Notification.Infrastructures.DataContext;
+using EvoMarket.Infrastructures.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<DataContext>(options =>
+builder.Services.AddDbContext<NotificationDataContext>(options =>
 {
     options
         .UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString"));
