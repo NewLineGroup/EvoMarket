@@ -1,17 +1,15 @@
-using Domain.Entities.Shops;
+using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 
 namespace EvoMarket.Auth.Infrastructure.DataContext;
 
 public class DataContext : DbContext
 {
-    public DbSet<Cart> Carts { get; set; }
-    public DbSet<Category> Categories { get; set; }
-    public DbSet<CategoryFilter> CategoryFilters { get; set; }
-    public DbSet<Client> Clients { get; set; }
-    public DbSet<FilterParam> FilterParams { get; set; }
-    public DbSet<FilterParamValue> FilterParamValues { get; set; }
-    public DbSet<Product> Products { get; set; }
+    [Column("devies")]
+    public DbSet<Device> Devices { get; set; }
+    [Column("users")]
+    public DbSet<User> Users { get; set; }
 
     public DataContext()
     {
@@ -22,8 +20,6 @@ public class DataContext : DbContext
     {
         optionsBuilder
             .UseLazyLoadingProxies();
-        optionsBuilder.UseNpgsql(
-            "Host=localhost; Port=5432; Database=ForDataContext; username=postgres; password=Xontaxta*2");
         base.OnConfiguring(optionsBuilder);
     }
 
@@ -31,5 +27,31 @@ public class DataContext : DbContext
     {
         modelBuilder
             .HasDefaultSchema("evoMarket_auth_infrastructure");
+
+        modelBuilder.Entity<User>()
+            .Property(u => u.Id)
+            .HasColumnName("user_id")
+            .IsRequired();
+
+        modelBuilder.Entity<User>()
+            .HasIndex(x => x.Id)
+            .IsUnique();
+
+        modelBuilder.Entity<Device>()
+            .Property(x => x.Id)
+            .HasColumnName("device_id")
+            .IsRequired();
+
+        modelBuilder.Entity<Device>()
+            .Property(x => x.UserId)
+            .IsRequired();
+
+        modelBuilder.Entity<Device>()
+            .HasKey(x => x.UserId)
+            .HasName("user_id");
+
+        modelBuilder.Entity<Device>()
+            .HasIndex(x => x.Id)
+            .IsUnique();
     }
 }
