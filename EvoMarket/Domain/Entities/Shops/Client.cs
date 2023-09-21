@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Entities.Payment;
 
 namespace Domain.Entities.Shops;
 
@@ -19,5 +20,8 @@ public class Client : ModelBase
     public long RoleId { get; set; }
     [Column("rate")]
     public double Rate { get; set; }
+
+    [NotMapped]
+    public ICollection<ClientAccount> ClientAccounts { get; set; }
 
 }
