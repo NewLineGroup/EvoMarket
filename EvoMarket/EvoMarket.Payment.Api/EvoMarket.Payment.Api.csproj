@@ -16,10 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\EvoMarket.Payment.Service\EvoMarket.Payment.Service.csproj" />
     </ItemGroup>
 
