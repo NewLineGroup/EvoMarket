@@ -1,4 +1,10 @@
+using EvoMarket.Payment.Api.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ConfigureDbContexts(builder.Configuration);
+
+builder.Services.ConfigureRepositories();
 
 // Add services to the container.
 builder.Host.ConfigureHostConfiguration(configurationBuilder =>

@@ -15,17 +15,13 @@ public class PaymentDbContext : DbContext
     {
     }
 
-   
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        
         base.OnModelCreating(modelBuilder);
     }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseNpgsql(
-            "Host=localhost; Port=5432; Database=EvoMarketData; username=postgres; password=2000;");
-        base.OnConfiguring(optionsBuilder);
-    }
+    
+    
+    
 }
