@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities;
 
-public class Auditable : ModelBase
+public abstract class AuditableModelBase : ModelBase
 {
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }

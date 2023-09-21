@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain.Entities.Payment;
 
 [Table("transactions" , Schema = "payment") ]
-public class Transaction : Auditable
+public class Transaction : AuditableModelBase
 {
     [Column("amount")]
     public decimal Amount { get; set; }
