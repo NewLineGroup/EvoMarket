@@ -10,6 +10,11 @@ public class ShopDataContext:DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
 
+
+    public ShopDataContext()
+    {
+        
+    }
     public ShopDataContext(DbContextOptions<ShopDataContext>options):base(options)
     {
         

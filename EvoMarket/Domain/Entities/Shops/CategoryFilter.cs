@@ -5,6 +5,7 @@ namespace Domain.Entities.Shops;
 [Table("category_filters", Schema = "shop")]
 public class CategoryFilter : ModelBase
 {
+    
     [Column("category_id")] public long CategoryId { get; set; }
     public Category Category { get; set; }
     [Column("filter_param_id")] public long FilterPramId { get; set; }

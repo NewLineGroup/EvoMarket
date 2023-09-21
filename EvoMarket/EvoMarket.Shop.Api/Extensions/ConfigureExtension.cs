@@ -19,13 +19,14 @@ public static class ConfigureExtension
     
     public static void ConfigureRepositories(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddScoped<ICartRepository, CartRepository>();
+        serviceCollection.AddScoped<IProductRepository, ProductRepository>();
         serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
-        serviceCollection.AddScoped<ICategoryFilterRepository, CategoryFilterRepository>();
+        serviceCollection.AddScoped<ICartRepository, CartRepository>();
         serviceCollection.AddScoped<IClientRepository, ClientRepository>();
+        
+        serviceCollection.AddScoped<ICategoryFilterRepository, CategoryFilterRepository>();
         serviceCollection.AddScoped<IFilterParamRepository, FilterParamRepository>();
         serviceCollection.AddScoped<IFilterParamValueRepository, FilterParamValueRepository>();
-        serviceCollection.AddScoped<IProductRepository, ProductRepository>();
         
     }
 }
