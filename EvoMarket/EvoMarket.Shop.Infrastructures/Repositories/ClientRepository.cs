@@ -11,4 +11,11 @@ public class ClientRepository:RepositoryBase<Client>,IClientRepository
     public ClientRepository(DataContext context) : base(context)
     {
     }
+
+    public async ValueTask<long> CreateDefaultClient()
+    {
+        Client client = await base.CreatAsync(
+            new Client());
+        return client.Id;
+    }
 }
