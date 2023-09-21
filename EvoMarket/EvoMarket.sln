@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Payment.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Payment.Service", "EvoMarket.Payment.Service\EvoMarket.Payment.Service.csproj", "{8AB61191-C5FA-48E5-9495-64D638B7DD64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Auth.Service", "EvoMarket.Auth.Service\EvoMarket.Auth.Service.csproj", "{DBF839D4-2BA0-4552-88B1-2A010BF0B0A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{8AB61191-C5FA-48E5-9495-64D638B7DD64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AB61191-C5FA-48E5-9495-64D638B7DD64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AB61191-C5FA-48E5-9495-64D638B7DD64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBF839D4-2BA0-4552-88B1-2A010BF0B0A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBF839D4-2BA0-4552-88B1-2A010BF0B0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBF839D4-2BA0-4552-88B1-2A010BF0B0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBF839D4-2BA0-4552-88B1-2A010BF0B0A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 
@@ -66,5 +72,6 @@ Global
 		{A2F4EBBD-B05A-40E2-9BEA-50514F1E3E1B} = {D283242C-515D-4898-BE02-C57F10D26EF9}
 		{B6A2307B-23B7-4C33-8922-D4FE2B0EEFA3} = {D283242C-515D-4898-BE02-C57F10D26EF9}
 		{8AB61191-C5FA-48E5-9495-64D638B7DD64} = {D5CC42FC-A1E1-4FDB-B43D-CD4D916DD12B}
+		{DBF839D4-2BA0-4552-88B1-2A010BF0B0A8} = {D5CC42FC-A1E1-4FDB-B43D-CD4D916DD12B}
 	EndGlobalSection
 EndGlobal
