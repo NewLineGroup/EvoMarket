@@ -5,5 +5,6 @@ namespace Shop.Interfaces;
 
 public interface IClientRepository:IRepositoryBase<Client>
 {
-    
+    public ValueTask<long> GetNewClientId();
+
 }
