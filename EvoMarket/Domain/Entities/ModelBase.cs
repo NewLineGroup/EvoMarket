@@ -5,6 +5,6 @@ namespace Domain.Entities;
 public class ModelBase
 {
     [Column("id")] public long Id { get; set; }
-    [Column("SaveDate")] public DateTime SaveDate { get; set; }
-    [Column("UpdateDate")] public DateTime UpdateDate { get; set; }
+    [Column("create_date")] public DateTime CreateDate { get; set; }
+    [Column("update_date")] public DateTime UpdateDate { get; set; }
 }
