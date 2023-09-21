@@ -4,7 +4,7 @@ using Domain.Entities.Payment;
 namespace Domain.Entities.Shops;
 
 [Table("clients", Schema = "shop")]
-public class Client : ModelBase
+public class Client : Auditable
 {
     [Column("first_name")] public string FirstName { get; set; }
     [Column("last_name")] public string LastName { get; set; }
