@@ -1,4 +1,5 @@
 using System.Reflection;
+using Domain.Entities.Auth;
 using Domain.Entities.Notification;
 using Domain.Entities.Shops;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,8 @@ namespace EvoMarket.Infrastructure.DbContexts;
 
 public class DataContext : DbContext
 {
+    public DbSet<User> Users { get; set; }
+    public DbSet<Device> UserDevices { get; set; }
     public DbSet<ClientNotifications> ClientNotifications { get; set; }
     public DbSet<Cart> Carts { get; set; }
     public DbSet<Category> Categories { get; set; }
@@ -16,6 +19,17 @@ public class DataContext : DbContext
     public DbSet<FilterParamValue> FilterParamValues { get; set; }
     public DbSet<Product> Products { get; set; }
 
+
+    public DataContext()
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+    
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
