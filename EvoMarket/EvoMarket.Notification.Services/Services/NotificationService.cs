@@ -19,8 +19,8 @@ public class NotificationService : INotificationService
         NetworkCredential myCredential = new NetworkCredential("evomarket777@gmail.com", "hcsm ymjx iyhf hgxm");
 
         
-        client.Host = "99.99.127.233";
-        client.Port = 417;
+        client.Host = "smtp.gmail.com";
+        client.Port = 587;
         client.DeliveryMethod = SmtpDeliveryMethod.Network;
         client.UseDefaultCredentials = false;
         client.Credentials = myCredential;
