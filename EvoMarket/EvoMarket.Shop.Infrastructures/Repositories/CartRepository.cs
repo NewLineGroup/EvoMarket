@@ -7,7 +7,7 @@ namespace Shop.Repositories;
 
 public class CartRepository : RepositoryBase<Cart>, ICartRepository
 {
-    public CartRepository(DbContext context) : base(context)
+    public CartRepository(DataContext context) : base(context)
     {
     }
 }
