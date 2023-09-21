@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain.Entities.Auth;
 
 [Table("devices")]
-public class Device:ModelBase
+public class Device:Auditable
 {
     [Required]
     [Column("user_id")]

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain.Entities.Shops;
 
 [Table("products", Schema = "shop")]
-public class Product : ModelBase
+public class Product : Auditable
 {
     [Column("title")] public string Title { get; set; }
     [Column("price")] public decimal Price { get; set; }

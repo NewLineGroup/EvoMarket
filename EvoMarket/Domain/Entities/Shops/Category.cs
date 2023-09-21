@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Domain.Entities.Shops;
 
 [Table("categories", Schema = "shop")]
-public class Category : ModelBase
+public class Category : Auditable
 {
     [Column("title")] public string Title { get; set; }
     [Column("image_url")] public string ImageUrl { get; set; }

@@ -4,7 +4,7 @@ using Domain.Entities.Shops;
 namespace Domain.Entities.Notification;
 
 [Table("client_notifications")]
-public class ClientNotifications : ModelBase
+public class ClientNotifications : Auditable
 {
     [Column("client_id")]
     public int ClientId { get; set; }

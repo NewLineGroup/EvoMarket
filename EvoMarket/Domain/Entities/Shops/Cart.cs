@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain.Entities.Shops;
 
 [Table("carts", Schema = "shop")]
-public class Cart : ModelBase
+public class Cart : Auditable
 {
     [Column("quantity")] public int Quantity { get; set; }
 
