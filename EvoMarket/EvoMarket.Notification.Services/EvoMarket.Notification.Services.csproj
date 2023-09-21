@@ -6,8 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+
     <ItemGroup>
-      <ProjectReference Include="..\EvoMarket.Notification.Infrastructures\EvoMarket.Notification.Infrastructures.csproj" />
+      <ProjectReference Include="..\EvoMarket.Infrastructure\EvoMarket.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

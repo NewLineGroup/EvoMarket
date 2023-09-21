@@ -7,8 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EvoMarket.Shop.Infrastructures\EvoMarket.Shop.Infrastructures.csproj" />
-      <ProjectReference Include="..\EvoMarket.WebCore\EvoMarket.WebCore.csproj" />
+      <ProjectReference Include="..\EvoMarket.Infrastructure\EvoMarket.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

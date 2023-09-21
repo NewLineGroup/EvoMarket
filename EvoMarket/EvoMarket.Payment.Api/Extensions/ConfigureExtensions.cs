@@ -1,6 +1,5 @@
-using Domain.Entities.Payment;
+using EvoMarket.Infrastructures.DbContexts;
 using EvoMarket.Payment.Infrastructure.Intercafes;
-using EvoMarket.Payment.Infrastructure.PaymentDataContext;
 using EvoMarket.Payment.Infrastructure.PaymentRepositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +9,7 @@ public static class ConfigureExtensions
 {
     public static void ConfigureDbContexts(this IServiceCollection serviceCollection, ConfigurationManager manager)
     {
-        serviceCollection.AddDbContext<PaymentDbContext>(options =>
+        serviceCollection.AddDbContext<PaymentDataContext>(options =>
         {
             options
                 .UseNpgsql(manager.GetConnectionString("DefaultConnectionString"));

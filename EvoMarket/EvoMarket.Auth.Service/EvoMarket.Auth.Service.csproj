@@ -6,11 +6,7 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-
-
     <ItemGroup>
-      <ProjectReference Include="..\Domain\Domain.csproj" />
-      <ProjectReference Include="..\EvoMarket.Auth.Infrastructure\EvoMarket.Auth.Infrastructure.csproj" />
+      <ProjectReference Include="..\EvoMarket.Infrastructure\EvoMarket.Infrastructure.csproj" />
     </ItemGroup>
-
 </Project>
