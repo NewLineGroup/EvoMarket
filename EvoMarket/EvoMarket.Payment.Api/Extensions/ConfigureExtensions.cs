@@ -16,8 +16,7 @@ public static class ConfigureExtensions
                 .UseNpgsql(manager.GetConnectionString("DefaultConnectionString"));
         });
     }
-
-
+    
     public static void ConfigureRepositories(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<ITransactionRepository, TransactionRepository>();
