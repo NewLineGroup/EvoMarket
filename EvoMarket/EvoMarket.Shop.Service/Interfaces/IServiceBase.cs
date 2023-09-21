@@ -2,11 +2,11 @@
 
 public interface IServiceBase<T>
 {
-    public ValueTask<IEnumerable<T>> GetAll();
-    public ValueTask<T> GetById(long id);
-    public ValueTask<T> Create(T data);
-    public ValueTask<T> Update(T data);
-    public ValueTask<T> Delete(T data);
-    public ValueTask<T> Delete(long id);
+    public ValueTask<IEnumerable<T>> GetAllAsync();
+    public ValueTask<T> GetByIdAsync(long id);
+    public ValueTask<T> CreateAsync(T data);
+    public ValueTask<T> UpdateAsync(T data);
+    public ValueTask<T> DeleteAsync(T data);
+    public ValueTask<T> DeleteAsync(long id);
 
 }

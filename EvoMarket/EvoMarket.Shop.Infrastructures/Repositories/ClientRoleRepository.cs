@@ -5,7 +5,7 @@ using Shop.Interfaces;
 
 namespace Shop.Repositories;
 
-public class ClientRoleRepository : RepositoryBase<ClientRole>, IClientRoleRepostiroy
+public class ClientRoleRepository : RepositoryBase<ClientRole>, IClientRoleRepository
 {
     public ClientRoleRepository(DataContext context) : base(context)
     {
