@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Domain.Entities.Payment;
 using EvoMarket.Infrastructure.DbContexts;
 using EvoMarket.Payment.Infrastructure.Intercafes;
