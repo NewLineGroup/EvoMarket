@@ -1,5 +1,6 @@
 ﻿using Domain.Dto.ShopDto;
 using Domain.Entities.Shops;
+using EvoMarket.WebCore;
 using EvoMarket.WebCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Interfaces;
@@ -17,7 +18,7 @@ public class CartController : MyControllerBase<Cart>
     }
     
     [HttpPost("create")]
-    public async ValueTask<Cart> CreateAsync(CartCreateDto data)
+    public async ValueTask<ApiResult<Cart>> CreateAsync(CartCreateDto data)
     {
         Cart cart = new Cart
         {
@@ -30,7 +31,7 @@ public class CartController : MyControllerBase<Cart>
         return await _repository.CreatAsync(cart);
     }
     [HttpPut("update")]
-    public async ValueTask<Cart> UpdateAsync(CartUpdateDto data)
+    public async ValueTask<ApiResult<Cart>> UpdateAsync(CartUpdateDto data)
     {
         Cart cart = new Cart()
         {
