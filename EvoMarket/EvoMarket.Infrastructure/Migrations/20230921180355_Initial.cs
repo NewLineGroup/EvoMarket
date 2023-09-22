@@ -25,7 +25,7 @@ namespace EvoMarket.Infrastructure.Migrations
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    total_emount = table.Column<decimal>(type: "numeric", nullable: false),
+                    total_amount = table.Column<decimal>(type: "numeric", nullable: false),
                     total_count = table.Column<int>(type: "integer", nullable: false),
                     client_id = table.Column<long>(type: "bigint", nullable: false),
                     transaction_id = table.Column<long>(type: "bigint", nullable: false),
