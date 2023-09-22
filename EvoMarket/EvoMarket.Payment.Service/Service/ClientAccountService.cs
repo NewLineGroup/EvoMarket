@@ -8,7 +8,7 @@ using EvoMarket.Payment.Infrastructure.Intercafes;
 
 namespace EvoMarket.Payment.Service.Service;
 
-public class ClientAccountService
+public class ClientAccountService:IClientAccountService
 {
     private readonly ITransactionRepository _transactionRepository;
     private readonly IClientAccountRepository _clientAccountRepository;
@@ -22,7 +22,7 @@ public class ClientAccountService
     }
 
 
-    public async ValueTask<TransactionUpdateDto> TransferToTheBalance(ClientAccountCreateDto account)
+    public async ValueTask<TransactionUpdateDto> TransferToTheBalanceAsync(ClientAccountCreateDto account)
     {
         var result = new Transaction()
         {

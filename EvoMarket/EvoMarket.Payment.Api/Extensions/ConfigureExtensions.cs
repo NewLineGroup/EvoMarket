@@ -24,6 +24,8 @@ public static class ConfigureExtensions
         serviceCollection.AddScoped<ITransactionRepository, TransactionRepository>();
         serviceCollection.AddScoped<IClientAccountRepository, ClientAccountRepository>();
         serviceCollection.AddScoped<ITransactionService, TransactionService>();
+        serviceCollection.AddScoped<IClientAccountService,ClientAccountService>();
+
 
     }
 }

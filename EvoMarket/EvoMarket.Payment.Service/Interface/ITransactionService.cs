@@ -6,7 +6,7 @@ namespace EvoMarket.Payment.Service.Service;
 
 public interface ITransactionService
 {
-    ValueTask<TransactionUpdateDto> Transaction(TransactionCreateDto transactionCreateDto);
+    ValueTask<TransactionUpdateDto> TransactionAsync(TransactionCreateDto transactionCreateDto);
 
-    ValueTask<TransactionsResponseDto> GetByIdAndTime(TransactionsRequestDto transactionsRequestDto);
+    ValueTask<TransactionsResponseDto> GetByIdAndTimeAsync(TransactionsRequestDto transactionsRequestDto);
 }
