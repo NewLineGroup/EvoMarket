@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EvoMarket.Payment.Api.Controllers;
 [Controller]
-public class ClientAccountController
+public class ClientAccountController : ControllerBase
 {
     private readonly IClientAccountService _clientAccountService;
 

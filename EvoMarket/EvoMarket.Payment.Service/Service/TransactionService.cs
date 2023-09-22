@@ -5,7 +5,7 @@ using EvoMarket.Payment.Infrastructure.Intercafes;
 
 namespace EvoMarket.Payment.Service.Service;
 
-public class TransactionService
+public class TransactionService : ITransactionService
 {
     private readonly ITransactionRepository _transactionRepository;
     private readonly IClientAccountRepository _clientAccountRepository;
