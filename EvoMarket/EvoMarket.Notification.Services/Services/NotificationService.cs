@@ -1,5 +1,8 @@
 using System.Net;
 using System.Net.Mail;
+using Domain.Entities.Notification;
+using EvoMarket.Infrastructure.DbContexts;
+using EvoMarket.Notification.Infrastructures.Interfaces;
 using EvoMarket.Notification.Services.Interfaces;
 
 namespace EvoMarket.Notification.Services.Services;
@@ -7,10 +10,12 @@ namespace EvoMarket.Notification.Services.Services;
 public class NotificationService : INotificationService
 {
     private readonly SmtpClient client;
+    private readonly INotificationRepository _notificationRepository;
 
-    public NotificationService(SmtpClient smtpClient)
+    public NotificationService(SmtpClient smtpClient, INotificationRepository notificationRepository)
     {
         client = smtpClient;
+        _notificationRepository = notificationRepository;
     }
     public async Task SendMail(string addressTo,  string mailSubject, string mailBody)
     {
@@ -37,5 +42,35 @@ public class NotificationService : INotificationService
         
     }
 
-    
+    public async Task<ClientNotification> CreateClientNotificationMessages(string message, long ClientId)
+    {
+        var insertMessage = new ClientNotification()
+        {
+            ClientId = ClientId,
+            CreatedAt = DateTime.Now,
+            message = message,
+            Received = false,
+        };
+        var result = await _notificationRepository.CreatAsync(insertMessage);
+        
+        if (result is null)
+            throw new Exception("Uneble to add model ");
+        return result;
+    }
+
+    public async Task<List<ClientNotification>> GetAllMassages(long ClientId)
+    {
+       var result= _notificationRepository
+           .DbGetSet()
+           .Where(x => x.ClientId == ClientId)
+           .ToList();
+       return result;
+    }
+
+    public Task ReceivedMessages(List<long> MessageIds)
+    {
+        var resutl = _notificationRepository
+            .DbGetSet();
+        return null;
+    }
 }

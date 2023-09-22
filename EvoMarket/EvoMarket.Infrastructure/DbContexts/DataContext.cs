@@ -13,7 +13,7 @@ public class DataContext : DbContext
     public DbSet<User> Users { get; set; }
     [Column("user_devices")]
     public DbSet<Device> UserDevices { get; set; }
-    public DbSet<ClientNotifications> ClientNotifications { get; set; }
+    public DbSet<ClientNotification> ClientNotifications { get; set; }
     public DbSet<Cart> Carts { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<CategoryFilter> CategoryFilters { get; set; }
@@ -38,7 +38,7 @@ public class DataContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         
-        modelBuilder.Entity<ClientNotifications>()
+        modelBuilder.Entity<ClientNotification>()
             .HasIndex(x => x.Received);
 
         modelBuilder.Entity<User>()

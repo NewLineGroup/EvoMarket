@@ -4,21 +4,18 @@ using Domain.Entities.Shops;
 namespace Domain.Entities.Notification;
 
 [Table("client_notifications")]
-public class ClientNotifications : AuditableModelBase
+public class ClientNotification : AuditableModelBase
 {
     [Column("client_id")]
-    public int ClientId { get; set; }
+    public long ClientId { get; set; }
     
     [NotMapped]
     public Client Client { get; set; }
     
-    [Column("message_data")]
-    public DateTime MessageData { get; set; }
 
     [Column("message")]
     public string message { get; set; }
 
-    [Column("received")]
-    public bool Received { get; set; }
-    
+    [Column("received")] public bool Received { get; set; } = false;
+
 }
