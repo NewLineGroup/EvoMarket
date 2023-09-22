@@ -248,7 +248,7 @@ namespace EvoMarket.Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("total_count");
 
-                    b.Property<decimal>("TotalEmount")
+                    b.Property<decimal>("TotalAmount")
                         .HasColumnType("numeric")
                         .HasColumnName("total_emount");
 

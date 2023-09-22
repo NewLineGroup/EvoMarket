@@ -251,9 +251,9 @@ namespace EvoMarket.Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("total_count");
 
-                    b.Property<decimal>("TotalEmount")
+                    b.Property<decimal>("TotalAmount")
                         .HasColumnType("numeric")
-                        .HasColumnName("total_emount");
+                        .HasColumnName("total_amount");
 
                     b.Property<long>("TransactionId")
                         .HasColumnType("bigint")
