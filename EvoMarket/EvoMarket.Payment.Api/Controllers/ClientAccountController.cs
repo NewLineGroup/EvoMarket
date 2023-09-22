@@ -11,13 +11,11 @@ namespace EvoMarket.Payment.Api.Controllers;
 [Controller]
 public class ClientAccountController : ControllerBase
 {
-    public readonly ITransactionService transactionService;
     private readonly IClientAccountRepository _clientAccountRepository;
 
     public ClientAccountController(IClientAccountRepository _clientAccountRepository,
         ITransactionService transactionService)
     {
-        this.transactionService = transactionService;
         this._clientAccountRepository = _clientAccountRepository;
     }
 
