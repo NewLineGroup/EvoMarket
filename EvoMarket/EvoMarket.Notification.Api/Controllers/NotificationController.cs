@@ -15,19 +15,19 @@ public class NotificationController : Controller
     }
 
     [HttpPost("create")]
-    public async ValueTask<ClientNotification> CreateAsync(string message, long clientId)
+    public async ValueTask<ClientNotification> CreateAsync([FromBody] string message, long clientId)
     {
        return  await _notificationService.CreateClientNotificationMessagesAsync(message, clientId);
     }
 
     [HttpPut("update")]
-    public async ValueTask UpdateAsync(List<long> messageIds)
+    public async ValueTask UpdateAsync([FromBody] List<long> messageIds)
     {
        await _notificationService.ReceivedMessagesAsync(messageIds);
     }
     
     [HttpPost("send_email")]
-    public async ValueTask SendEmailAsync(string addressTo,  string mailSubject, string mailBody )
+    public async ValueTask SendEmailAsync([FromBody] string addressTo,  string mailSubject, string mailBody )
     {
         await _notificationService.SendMailAsync(addressTo, mailSubject, mailBody);
     }
