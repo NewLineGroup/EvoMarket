@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Notification.Api"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Infrastructure", "EvoMarket.Infrastructure\EvoMarket.Infrastructure.csproj", "{A8850950-6E6F-4A2A-A09C-42A28403FC28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Auth.Api", "EvoMarket.Auth.Api\EvoMarket.Auth.Api.csproj", "{34572C34-5080-4AD5-836E-3AB8855FEF5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{A8850950-6E6F-4A2A-A09C-42A28403FC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8850950-6E6F-4A2A-A09C-42A28403FC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8850950-6E6F-4A2A-A09C-42A28403FC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34572C34-5080-4AD5-836E-3AB8855FEF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34572C34-5080-4AD5-836E-3AB8855FEF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34572C34-5080-4AD5-836E-3AB8855FEF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34572C34-5080-4AD5-836E-3AB8855FEF5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 
@@ -94,5 +100,6 @@ Global
 		{939CFDF5-23FD-42C4-A852-055C6DF6E111} = {D5CC42FC-A1E1-4FDB-B43D-CD4D916DD12B}
 		{6FC31120-66CA-419E-8731-480592F51126} = {9690AC74-1D69-4402-8392-9B7A3CA3AF5D}
 		{A8850950-6E6F-4A2A-A09C-42A28403FC28} = {D283242C-515D-4898-BE02-C57F10D26EF9}
+		{34572C34-5080-4AD5-836E-3AB8855FEF5C} = {9690AC74-1D69-4402-8392-9B7A3CA3AF5D}
 	EndGlobalSection
 EndGlobal
