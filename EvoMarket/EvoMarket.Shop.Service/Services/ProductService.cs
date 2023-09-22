@@ -9,12 +9,19 @@ namespace EvoMarket.Shop.Service.Services;
 
 public class ProductService : ServiceBase<Product>, IProductService
 {
-    private readonly IProductRepository _repository;
-    public ProductService(IProductRepository repository) : base(repository)
+    protected readonly IProductRepository _repository;
+    protected readonly IClientRepository _clientRepository;
+    public ProductService(IProductRepository repository, IClientRepository clientRepository) : base(repository)
     {
         _repository = repository;
+        _clientRepository = clientRepository;
     }
 
+    /// <summary>
+    /// Product GetByFilters
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <returns></returns>
     public async Task<IEnumerable<Product>> GetByFilters([FromBody] FilterDto filter)
     {
         var filters = filter.ResponsiveFilterDtos;
@@ -40,6 +47,11 @@ public class ProductService : ServiceBase<Product>, IProductService
     }
 
 
+    /// <summary>
+    /// Create Product !
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
     public async ValueTask<Product> CreatAsync(ProductCreateDto data)
     {
         Product product = new Product
@@ -57,6 +69,11 @@ public class ProductService : ServiceBase<Product>, IProductService
         return await _repository.CreatAsync(product);
     }
 
+    /// <summary>
+    /// Product Update !
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
     public async ValueTask<Product> UpdateAsync(ProductUpdateDto data)
     { 
         Product product = new Product
@@ -75,4 +92,78 @@ public class ProductService : ServiceBase<Product>, IProductService
         
             return await _repository.UpdateAsync(product);
     }
+    
+    /// <summary>
+    /// Check Client Age !
+    /// </summary>
+    /// <param name="productId"></param>
+    /// <param name="clientId"></param>
+    /// <returns></returns>
+    public async ValueTask<Product> CheckClientAge(long productId, long clientId)
+    {
+        var product = await this._repository.GetByIdAsync(productId);
+        var client =await _clientRepository.GetByIdAsync(clientId);
+        if (product.MinAge <= client.Age)
+            return product;
+        else
+            throw new Exception("Age not matched ");
+
+    }
+    
+    /// <summary>
+    /// Product Rating Process !
+    /// </summary>
+    /// <param name="products"></param>
+    /// <returns></returns>
+    public async ValueTask<Product> GetProductsByRating(long productId, float raiting)
+    {
+        Product product = await _repository.GetByIdAsync(productId);
+        if (product.Rate == 0)
+        {
+            product.Rate = raiting;
+        }
+        else
+        {
+            product.Rate = (product.Rate + raiting) / 2;
+        }
+        
+        return await _repository.UpdateAsync(product);
+    }
+    
+    /// <summary>
+    /// Promotion process of products!
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask<Product> DiscountProducts(long productId, decimal discountPrice)
+    {
+        Product product = await _repository.GetByIdAsync(productId);
+
+        product.DiscountPrice = discountPrice;
+        return await _repository.UpdateAsync(product);
+    }
+
+    /// <summary>
+    /// Filter by Product Category ! 
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask<Product> ProductCategoryFilter(long productCategoryId)
+    {
+        Product product = await _repository.GetByIdAsync(productCategoryId);
+
+        if (product.CategoryId != productCategoryId)
+            throw new Exception("Product Not Found");
+            
+        return product;
+        
+    }
+
+    /// <summary>
+    /// Filter by product parameters !
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask<Product> ProductFilterParam(string title)
+    {
+        return null;
+    }
+    
 }
