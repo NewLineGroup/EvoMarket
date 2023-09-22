@@ -22,7 +22,7 @@ public class ClientAccountController : ControllerBase
         this._clientAccountRepository = clientAccountRepository;
     }
 
-    [HttpGet("GetClient")]
+    [HttpGet("GetClientAccount")]
     public async Task<ApiResult<ClientAccount>> GetClient([FromQuery] long id)
     {
         var client = await _clientAccountRepository.GetByIdAsync(id);
