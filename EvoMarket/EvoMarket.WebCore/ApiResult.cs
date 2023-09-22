@@ -18,6 +18,16 @@ public class ApiResult<T>
         StatusCode = error.statusCode
     };
 
+    public static ApiResult<IEnumerable<T>> FromIEnumerable(IEnumerable<T> data,string message = null)
+    {
+        return new ApiResult<IEnumerable<T>>
+        {
+            Data = data,
+            Message = message,
+            StatusCode = 200
+        };
+    }
+
     public static implicit operator ApiResult<T>(T data) => new ApiResult<T>()
     {
         Data = data,
