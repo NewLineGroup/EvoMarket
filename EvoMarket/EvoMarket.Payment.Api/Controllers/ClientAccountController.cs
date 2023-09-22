@@ -3,7 +3,6 @@ using Domain.Entities.Shops;
 using EvoMarket.Payment.Infrastructure.Intercafes;
 using EvoMarket.Payment.Service.Service;
 using EvoMarket.WebCore;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EvoMarket.Payment.Api.Controllers;
@@ -32,7 +31,7 @@ public class ClientAccountController : ControllerBase
     }
 
     [HttpGet("getBalance")]
-    public async Task<ApiResult<decimal>> GetCleintBalance(long id)
+    public async Task<ApiResult<decimal>> GetCleintBalance([FromQuery] long id)
     {
         var client = await _clientAccountRepository.GetByIdAsync(id);
         if (client.Balance is decimal)
@@ -44,7 +43,7 @@ public class ClientAccountController : ControllerBase
     }
 
     [HttpGet("getClientTransations")]
-    public async Task<ApiResult<List<Transaction>>> GetClientTransations(long id)
+    public async Task<ApiResult<List<Transaction>>> GetClientTransations([FromQuery] long id)
     {
         var client = await _clientAccountRepository.GetByIdAsync(id);
         if (client is Client)
@@ -64,5 +63,18 @@ public class ClientAccountController : ControllerBase
         {
             return ("Client Account Not Found", 404);
         }
+    }
+
+    [HttpDelete("DeleteCLientAccount")]
+    public async Task<ApiResult<ClientAccount>> DeleteAccount([FromQuery] long id)
+    {
+        var client = await _clientAccountRepository.GetByIdAsync(id);
+        if (client is Client)
+        {
+            client.IsFreeze = true;
+            await _clientAccountRepository.UpdateAsync(client);
+        }
+
+        return ("Client Account Not Found", 404);
     }
 }
