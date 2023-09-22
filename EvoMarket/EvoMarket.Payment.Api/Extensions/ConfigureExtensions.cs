@@ -3,6 +3,8 @@ using EvoMarket.Payment.Infrastructure.Intercafes;
 using EvoMarket.Payment.Infrastructure.PaymentRepositories;
 using EvoMarket.Payment.Service.Service;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EvoMarket.Payment.Api.Extensions;
 

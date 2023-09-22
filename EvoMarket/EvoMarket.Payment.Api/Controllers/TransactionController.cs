@@ -1,6 +1,8 @@
+using System.Threading.Tasks;
 using Domain.Dto.Payment.TransactionDto;
 using EvoMarket.Payment.Service.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace EvoMarket.Payment.Api.Controllers;
 [Controller , Route("payment/")]
