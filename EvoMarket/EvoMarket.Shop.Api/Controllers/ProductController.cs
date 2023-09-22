@@ -1,5 +1,6 @@
 ﻿using Domain.Dto.ShopDto;
 using Domain.Entities.Shops;
+using EvoMarket.Shop.Service.Interfaces;
 using EvoMarket.WebCore;
 using EvoMarket.WebCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -12,45 +13,22 @@ namespace EvoMarket.Shop.Api.Controllers;
 public class ProductController:MyControllerBase<Product>
 {
     private readonly IProductRepository _repository;
+    private readonly IProductService _service;
 
-    public ProductController(IProductRepository repository) : base(repository)
+    public ProductController(IProductRepository repository, IProductService service) : base(repository)
     {
         _repository = repository;
+        _service = service;
     }
     
     [HttpPost("create")]
     public async ValueTask<ApiResult<Product>> CreateAsync(ProductCreateDto data)
     {
-        Product product = new Product
-        {
-            CreatedAt = DateTime.Now,
-            Title = data.Title,
-            Price = data.Price,
-            Quantity = data.Quantity,
-            ImageUrl = data.ImageUrl,
-            ThumbImageUrl = data.ImageUrl,
-            Rate = data.Rate,
-            CategoryId = data.CategoryId,
-            MinAge = data.MinAge
-        };
-        return await _repository.CreatAsync(product);
+        return await _service.CreatAsync(data);
     }
     [HttpPut("update")]
     public async ValueTask<ApiResult<Product>> UpdateAsync(ProductUpdateDto data)
     {
-        Product product = new Product
-        {
-            UpdatedAt = DateTime.Now,
-            Title = data.Title,
-            Price = data.Price,
-            Quantity = data.Quantity,
-            DiscountPrice = data.DiscountPrice,
-            ImageUrl = data.ImageUrl,
-            ThumbImageUrl = data.ImageUrl,
-            Rate = data.Rate,
-            CategoryId = data.CategoryId,
-            MinAge = data.MinAge
-        };
-        return await _repository.UpdateAsync(product);
+        return await _service.UpdateAsync(data);
     }
 }

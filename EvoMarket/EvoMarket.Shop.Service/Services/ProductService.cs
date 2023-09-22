@@ -9,8 +9,10 @@ namespace EvoMarket.Shop.Service.Services;
 
 public class ProductService : ServiceBase<Product>, IProductService
 {
+    private readonly IProductRepository _repository;
     public ProductService(IProductRepository repository) : base(repository)
     {
+        _repository = repository;
     }
 
     public async Task<IEnumerable<Product>> GetByFilters([FromBody] FilterDto filter)
@@ -36,6 +38,41 @@ public class ProductService : ServiceBase<Product>, IProductService
 
         return await query.ToListAsync();
     }
-    
-    
+
+
+    public async ValueTask<Product> CreatAsync(ProductCreateDto data)
+    {
+        Product product = new Product
+        {
+            CreatedAt = DateTime.Now,
+            Title = data.Title,
+            Price = data.Price,
+            Quantity = data.Quantity,
+            ImageUrl = data.ImageUrl,
+            ThumbImageUrl = data.ImageUrl,
+            Rate = data.Rate,
+            CategoryId = data.CategoryId,
+            MinAge = data.MinAge
+        };
+        return await _repository.CreatAsync(product);
+    }
+
+    public async ValueTask<Product> UpdateAsync(ProductUpdateDto data)
+    { 
+        Product product = new Product
+        {
+            UpdatedAt = DateTime.Now,
+            Title = data.Title,
+            Price = data.Price,
+            Quantity = data.Quantity,
+            DiscountPrice = data.DiscountPrice,
+            ImageUrl = data.ImageUrl,
+            ThumbImageUrl = data.ImageUrl,
+            Rate = data.Rate,
+            CategoryId = data.CategoryId,
+            MinAge = data.MinAge
+        };
+        
+            return await _repository.UpdateAsync(product);
+    }
 }
