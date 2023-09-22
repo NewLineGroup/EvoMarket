@@ -4,6 +4,7 @@ using Domain.Entities.Notification;
 using EvoMarket.Infrastructure.DbContexts;
 using EvoMarket.Notification.Infrastructures.Interfaces;
 using EvoMarket.Notification.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EvoMarket.Notification.Services.Services;
 
@@ -67,10 +68,15 @@ public class NotificationService : INotificationService
        return result;
     }
 
-    public Task ReceivedMessages(List<long> MessageIds)
+    public async Task ReceivedMessages(List<long> messageIds)
     {
-        var resutl = _notificationRepository
-            .DbGetSet();
+        var result = await _notificationRepository
+            .DbGetSet()
+            .Where(notification => messageIds.Contains(notification.Id))
+            .ToListAsync();
+        
+        
+        
         return null;
     }
 }
