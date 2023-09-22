@@ -14,10 +14,9 @@ public class ClientAccountController : ControllerBase
 {
     private readonly IClientAccountRepository _clientAccountRepository;
 
-    public ClientAccountController(IClientAccountRepository _clientAccountRepository,
-        ITransactionService transactionService)
+    public ClientAccountController(IClientAccountRepository clientAccountRepository)
     {
-        this._clientAccountRepository = _clientAccountRepository;
+        this._clientAccountRepository = clientAccountRepository;
     }
 
     [HttpGet("GetClient")]
@@ -78,14 +77,6 @@ public class ClientAccountController : ControllerBase
         }
 
         return ("Client Account Not Found", 404);
-
-    private readonly IClientAccountService _clientAccountService;
-    private readonly IClientAccountRepository _clientAccountRepository;
-
-    public ClientAccountController(IClientAccountService clientAccountService ,IClientAccountRepository clientAccountRepository )
-    {
-        _clientAccountService = clientAccountService;
-        _clientAccountRepository = clientAccountRepository;
 
     }
 }
