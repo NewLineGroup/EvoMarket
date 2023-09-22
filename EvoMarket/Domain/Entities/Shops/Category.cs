@@ -8,6 +8,6 @@ public class Category : AuditableModelBase
 {
     [Column("title")] public string Title { get; set; }
     [Column("image_url")] public string ImageUrl { get; set; }
-    public ICollection<FilterParam> FilterParams { get; set; }
     public ICollection<Product> Products { get; set; }
+    public ICollection<FilterParam> Filters { get; set; }
 }

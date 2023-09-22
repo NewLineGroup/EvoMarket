@@ -8,7 +8,7 @@ namespace EvoMarket.Shop.Service.Services;
 
 public class ServiceBase<T> : IServiceBase<T> where T : ModelBase
 {
-    private readonly IRepositoryBase<T> _repositoryBase;
+    protected readonly IRepositoryBase<T> _repositoryBase;
 
     public ServiceBase(IRepositoryBase<T> repositoryBase)
     {

@@ -13,7 +13,8 @@ public class Client : AuditableModelBase
     [Column("profile_image")] public string? ProfileImage { get; set; }
     [Column("rate")] public double Rate { get; set; }
     [Column("age")] public int Age { get; set; }
-
+    [NotMapped]
+    public List<Cart> Carts { get; set; }
     [NotMapped]
     public ICollection<ClientAccount> ClientAccounts { get; set; }
 }
