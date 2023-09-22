@@ -1,4 +1,5 @@
 using EvoMarket.Infrastructure.DbContexts;
+using EvoMarket.Shop.Api.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,12 +12,18 @@ builder.Services.AddDbContext<DataContext>(options =>
     
 });
 
+builder.Services.ConfigureDbContexts(builder.Configuration);
+builder.Services.ConfigureRepositories();
+
+
 
     builder.Host.ConfigureHostConfiguration(configurationBuilder =>
 {
     configurationBuilder.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true,
         reloadOnChange: true);
 });
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
