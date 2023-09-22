@@ -27,10 +27,6 @@ public class TransactionService : ITransactionService
         {
             Time = DateTime.Now
         };
-        var resultDto = new TransactionUpdateDto()
-        {
-            Time = result.Time
-        };
         await using(var transaction = await _context.Database.BeginTransactionAsync())
         {
             try
@@ -56,9 +52,7 @@ public class TransactionService : ITransactionService
                     result.Success = false;
                     result.Account = clientAccount;
                     result.AccountId = clientAccount.Id;
-
                     throw new Exception("not enough money");
-
                 }
 
                 clientAccount.Balance -= money;
@@ -69,17 +63,28 @@ public class TransactionService : ITransactionService
                 result.Account = clientAccount;
                 result.Amount = money;
                 result.Success = true;
-                await _transactionRepository.CreatAsync(result);
+                var transactionResult=await _transactionRepository.CreatAsync(result);
                 await _context.Database.CommitTransactionAsync();
-                
-                return resultDto;
+
+                return new TransactionUpdateDto()
+                {
+                    Amount = transactionResult.Amount,
+                    Success = transactionResult.Success,
+                    Id = transactionResult.Id,
+                    Time = transactionResult.Time
+                };
             }
             catch (Exception e)
             {
                 await _context.Database.RollbackTransactionAsync();
-                resultDto.Success = false;
-                resultDto.Amount = result.Amount;
-                return resultDto;
+                var transactionResult=await _transactionRepository.CreatAsync(result);
+                return new TransactionUpdateDto()
+                {
+                    Amount = transactionResult.Amount,
+                    Success = transactionResult.Success,
+                    Id = transactionResult.Id,
+                    Time = transactionResult.Time
+                };
             }
             
         }
