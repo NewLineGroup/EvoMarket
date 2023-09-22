@@ -41,6 +41,6 @@ public class UserController : BaseController<User>
             Id = data.Id,
             UpdatedAt = DateTime.Now
         };
-        return await _repository.CreatAsync(user);
+        return await _repository.UpdateAsync(user);
     }
 }

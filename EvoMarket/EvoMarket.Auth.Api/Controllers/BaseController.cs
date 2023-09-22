@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EvoMarket.Auth.Api.Controllers;
 
-public class BaseController<T>: ControllerBase where T : ModelBase
+public abstract class BaseController<T>: ControllerBase where T : ModelBase
 {
     private readonly IRepositoryBase<T> _repositoryBase;
 
