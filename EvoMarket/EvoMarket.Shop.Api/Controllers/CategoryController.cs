@@ -1,5 +1,6 @@
 ﻿using Domain.Dto.ShopDto;
 using Domain.Entities.Shops;
+using EvoMarket.WebCore;
 using EvoMarket.WebCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Interfaces;
@@ -16,7 +17,7 @@ public class CategoryController : MyControllerBase<Category>
     }
 
     [HttpPost("create")]
-    public async ValueTask<Category> CreateAsync(CategoryCreateDto data)
+    public async ValueTask<ApiResult<Category>> CreateAsync(CategoryCreateDto data)
     {
         Category category = new Category
         {
@@ -27,7 +28,7 @@ public class CategoryController : MyControllerBase<Category>
         return await _repository.CreatAsync(category);
     }
     [HttpPut("update")]
-    public async ValueTask<Category> UpdateAsync(CategoryUpdateDto data)
+    public async ValueTask<ApiResult<Category>> UpdateAsync(CategoryUpdateDto data)
     {
         Category category = new Category
         {

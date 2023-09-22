@@ -1,8 +1,10 @@
 ﻿using Domain.Dto.ShopDto;
 using Domain.Entities;
 using Domain.Entities.Shops;
+using EvoMarket.WebCore;
 using EvoMarket.WebCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EvoMarket.Shop.Api.Controllers;
 
@@ -16,14 +18,14 @@ public abstract class MyControllerBase<T> : ControllerBase where T : ModelBase
     }
 
     [HttpGet]
-    public async ValueTask<IEnumerable<T>> GetAllAsync()
-        => await _repositoryBase.GetAllAsync();
+    public async ValueTask<ApiResult<IEnumerable<T>>> GetAllAsync()
+        => ApiResult<T>.FromIEnumerable(await _repositoryBase.GetAllAsync());
 
     [HttpGet("get_by_id{id:long}")]
-    public async ValueTask<T> GetByIdAsync(long id)
+    public async ValueTask<ApiResult<T>> GetByIdAsync(long id)
         => await _repositoryBase.GetByIdAsync(id);
     
     [HttpDelete("delete/{id:long}")]
-    public async ValueTask<T> DeleteAsync(long id)
+    public async ValueTask<ApiResult<T>> DeleteAsync(long id)
         => await _repositoryBase.DeleteAsync(id);
 }

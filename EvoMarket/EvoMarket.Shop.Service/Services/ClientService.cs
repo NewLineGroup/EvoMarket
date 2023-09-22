@@ -1,3 +1,4 @@
+using Domain.Dto.ShopDto;
 using System.Threading.Tasks;
 using Domain.Entities.Shops;
 using EvoMarket.Shop.Service.Interfaces;
@@ -19,5 +20,35 @@ public class ClientService : ServiceBase<Client>, IClientService
     {
         Client client = await _repository.CreatAsync(new Client());
         return client.Id;
+    }
+
+    public async ValueTask<Client> CreatAsync(ClientCreateDto data)
+    {
+        Client client = new Client
+        {
+            CreatedAt = DateTime.Now,
+            FirstName = data.FirstName,
+            LastName = data.LastName,
+            PhoneNumber = data.PhoneNumber,
+            Address = data.Address,
+            ProfileImage = data.ProfileImage,
+            Age = data.Age
+        };
+        return await _repository.CreatAsync(client);
+    }
+    
+    public async ValueTask<Client> UpdateAsync(ClientUpdateDto data)
+    {
+        Client client = new Client
+        {
+            UpdatedAt = DateTime.Now,
+            FirstName = data.FirstName,
+            LastName = data.LastName,
+            PhoneNumber = data.PhoneNumber,
+            Address = data.Address,
+            ProfileImage = data.ProfileImage,
+            Age = data.Age
+        };
+        return await _repository.UpdateAsync(client);
     }
 }

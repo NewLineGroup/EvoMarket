@@ -1,5 +1,7 @@
+
 using Domain.Entities.Payment;
 using Domain.Entities.Shops;
+
 using EvoMarket.Payment.Infrastructure.Intercafes;
 using EvoMarket.Payment.Service.Service;
 using EvoMarket.WebCore;
@@ -76,5 +78,14 @@ public class ClientAccountController : ControllerBase
         }
 
         return ("Client Account Not Found", 404);
+
+    private readonly IClientAccountService _clientAccountService;
+    private readonly IClientAccountRepository _clientAccountRepository;
+
+    public ClientAccountController(IClientAccountService clientAccountService ,IClientAccountRepository clientAccountRepository )
+    {
+        _clientAccountService = clientAccountService;
+        _clientAccountRepository = clientAccountRepository;
+
     }
 }

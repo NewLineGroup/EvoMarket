@@ -5,4 +5,5 @@ namespace EvoMarket.Payment.Infrastructure.Intercafes;
 
 public interface ITransactionRepository : IRepositoryBase<Transaction>
 {
+    ValueTask<IEnumerable<Transaction>> GetTransactionsByTimeAsync(DateTime startTime, DateTime endTime);
 }
