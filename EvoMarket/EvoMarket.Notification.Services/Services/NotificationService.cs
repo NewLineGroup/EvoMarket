@@ -18,7 +18,7 @@ public class NotificationService : INotificationService
         client = smtpClient;
         _notificationRepository = notificationRepository;
     }
-    public async Task SendMail(string addressTo,  string mailSubject, string mailBody)
+    public async ValueTask SendMailAsync(string addressTo,  string mailSubject, string mailBody)
     {
         string addressFrom = "evomarket777@gmail.com";
         
@@ -43,7 +43,7 @@ public class NotificationService : INotificationService
         
     }
 
-    public async Task<ClientNotification> CreateClientNotificationMessages(string message, long ClientId)
+    public async ValueTask<ClientNotification> CreateClientNotificationMessagesAsync(string message, long ClientId)
     {
         var insertMessage = new ClientNotification()
         {
@@ -59,24 +59,25 @@ public class NotificationService : INotificationService
         return result;
     }
 
-    public async Task<List<ClientNotification>> GetAllMassages(long ClientId)
+    public async ValueTask<List<ClientNotification>> GetAllMassagesAsync(long ClientId)
     {
        var result= _notificationRepository
            .DbGetSet()
-           .Where(x => x.ClientId == ClientId)
+           .Where(x => x.ClientId == ClientId && x.Received == false)
            .ToList();
        return result;
     }
 
-    public async Task ReceivedMessages(List<long> messageIds)
+    public async ValueTask ReceivedMessagesAsync(List<long> messageIds)
     {
         var result = await _notificationRepository
             .DbGetSet()
             .Where(notification => messageIds.Contains(notification.Id))
             .ToListAsync();
         
-        
-        
-        return null;
+        for (var i = 0; i < result.Count; i++)
+        {
+            result[i].Received = true;
+        }
     }
 }

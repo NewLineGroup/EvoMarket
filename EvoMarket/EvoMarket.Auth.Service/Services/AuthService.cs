@@ -51,7 +51,7 @@ public class AuthService:IAuthService
           if (foundDevice is not null)
           {
               string message =$"Access to your account was detected on {DateTime.Now}./n If it's not you, you can cancel the session";
-              await NotificationService.SendMail(userDto.Email, "Warning message", message);
+              await NotificationService.SendMailAsync(userDto.Email, "Warning message", message);
           }
           return true;
       }
