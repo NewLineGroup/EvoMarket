@@ -21,16 +21,20 @@ public static class NotificationConfigureExtension
         });
     }
     
-    public static void ConfigureRepositories(this IServiceCollection serviceCollection)
+    public static void ConfigureRepositories(this IServiceCollection serviceCollection, ConfigurationManager configurationManager)
     {
         serviceCollection.AddScoped<INotificationService, NotificationService>();
         serviceCollection.AddScoped<INotificationRepository, NotificationRepository>();
         serviceCollection.AddSingleton<SmtpClient>(provider =>
         {
-            NetworkCredential myCredential = new NetworkCredential("evomarket777@gmail.com", "hcsm ymjx iyhf hgxm");
+            var username = configurationManager.GetSection("SMTP:Username").Get<string>();
+            var password = configurationManager.GetSection("SMTP:Password").Get<string>();
+            var host = configurationManager.GetSection("SMTP:Host").Get<string>();
+            var port = configurationManager.GetSection("SMTP:Port").Get<int>();
+            NetworkCredential myCredential = new NetworkCredential(username, password );
             var client = new SmtpClient();
-            client.Host = "smtp.gmail.com";
-            client.Port = 587;
+            client.Host = host;
+            client.Port = port;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
             client.Credentials = myCredential;

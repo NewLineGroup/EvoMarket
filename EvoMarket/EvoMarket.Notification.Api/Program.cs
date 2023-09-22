@@ -13,7 +13,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 
 builder.Services.ConfigureDbContexts(builder.Configuration);
-builder.Services.ConfigureRepositories();
+builder.Services.ConfigureRepositories(builder.Configuration);
 
 
 

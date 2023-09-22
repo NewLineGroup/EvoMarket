@@ -20,7 +20,7 @@ public class NotificationService : INotificationService
     }
     public async ValueTask SendMailAsync(string addressTo,  string mailSubject, string mailBody)
     {
-        string addressFrom = "evomarket777@gmail.com";
+        var addressFrom = (client.Credentials as NetworkCredential).UserName;
         
         MailAddress from = new MailAddress(addressFrom);
         MailAddress to = new MailAddress(addressTo);
