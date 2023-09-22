@@ -1,9 +1,9 @@
 using Domain.Entities.Auth;
-using EvoMarket.Auth.Infrastructure.Interfaces;
+using EvoMarket.Auth.Service.Interfaces.RepositoryInterfaces;
 using EvoMarket.WebCore.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace EvoMarket.Auth.Infrastructure.Repositories;
+namespace EvoMarket.Auth.Service.Repositories;
 
 
 public class DeviceRepository:RepositoryBase<Device>,IDeviceRepository
@@ -12,7 +12,7 @@ public class DeviceRepository:RepositoryBase<Device>,IDeviceRepository
     {
     }
 
-    public ValueTask<List<Device>> GetUserDevices(int userId)
+    public ValueTask<List<Device>> GetUserDevices(long userId)
     {
         var devices = GetAllAsync().Result.ToList();
         return ValueTask.FromResult(devices.Where(device => device.Id == userId).ToList());

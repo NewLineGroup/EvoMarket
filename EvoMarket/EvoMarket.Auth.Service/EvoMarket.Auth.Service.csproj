@@ -8,5 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\EvoMarket.Infrastructure\EvoMarket.Infrastructure.csproj" />
+      <ProjectReference Include="..\EvoMarket.Notification.Services\EvoMarket.Notification.Services.csproj" />
+      <ProjectReference Include="..\EvoMarket.Shop.Service\EvoMarket.Shop.Service.csproj" />
     </ItemGroup>
 </Project>
