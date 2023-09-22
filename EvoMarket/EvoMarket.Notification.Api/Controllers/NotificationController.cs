@@ -1,3 +1,4 @@
+using Domain.Dto.Notification;
 using Domain.Entities.Notification;
 using EvoMarket.Notification.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +16,9 @@ public class NotificationController : Controller
     }
 
     [HttpPost("create")]
-    public async ValueTask<ClientNotification> CreateAsync([FromBody] string message, long clientId)
+    public async ValueTask<ClientNotification> CreateAsync([FromBody] NotificationMessageDto dto)
     {
-       return  await _notificationService.CreateClientNotificationMessagesAsync(message, clientId);
+       return  await _notificationService.CreateClientNotificationMessagesAsync(dto.Message, dto.ClientId);
     }
 
     [HttpPut("update")]
@@ -26,10 +27,10 @@ public class NotificationController : Controller
        await _notificationService.ReceivedMessagesAsync(messageIds);
     }
     
-    [HttpPost("send_email")]
-    public async ValueTask SendEmailAsync([FromBody] string addressTo,  string mailSubject, string mailBody )
+    [HttpPost("send-email")]
+    public async ValueTask SendEmailAsync([FromBody] EmailDto dto )
     {
-        await _notificationService.SendMailAsync(addressTo, mailSubject, mailBody);
+        await _notificationService.SendMailAsync(dto.AddressTo, dto.MailSubject, dto.MailBody);
     }
 
     [HttpGet("get_all_new_messages")]
