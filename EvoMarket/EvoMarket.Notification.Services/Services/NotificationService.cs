@@ -22,16 +22,6 @@ public class NotificationService : INotificationService
     {
         string addressFrom = "evomarket777@gmail.com";
         
-        NetworkCredential myCredential = new NetworkCredential("evomarket777@gmail.com", "hcsm ymjx iyhf hgxm");
-
-        
-        client.Host = "smtp.gmail.com";
-        client.Port = 587;
-        client.DeliveryMethod = SmtpDeliveryMethod.Network;
-        client.UseDefaultCredentials = false;
-        client.Credentials = myCredential;
-        client.EnableSsl = true;
-
         MailAddress from = new MailAddress(addressFrom);
         MailAddress to = new MailAddress(addressTo);
         MailMessage message = new MailMessage(from, to);
@@ -39,8 +29,7 @@ public class NotificationService : INotificationService
         message.BodyEncoding = System.Text.Encoding.UTF8;
         message.Subject = mailSubject;
         message.SubjectEncoding = System.Text.Encoding.UTF8;
-        client.Send(message);
-        
+        client.SendAsync(message, CancellationToken.None);
     }
 
     public async ValueTask<ClientNotification> CreateClientNotificationMessagesAsync(string message, long ClientId)

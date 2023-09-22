@@ -1,4 +1,5 @@
 
+using System.Net;
 using System.Net.Mail;
 using EvoMarket.Infrastructure.DbContexts;
 using EvoMarket.Notification.Infrastructures.Interfaces;
@@ -24,6 +25,18 @@ public static class NotificationConfigureExtension
     {
         serviceCollection.AddScoped<INotificationService, NotificationService>();
         serviceCollection.AddScoped<INotificationRepository, NotificationRepository>();
-        serviceCollection.AddSingleton< SmtpClient >();
+        serviceCollection.AddSingleton<SmtpClient>(provider =>
+        {
+            NetworkCredential myCredential = new NetworkCredential("evomarket777@gmail.com", "hcsm ymjx iyhf hgxm");
+            var client = new SmtpClient();
+            client.Host = "smtp.gmail.com";
+            client.Port = 587;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = myCredential;
+            client.EnableSsl = true;
+
+            return client;
+        });
     }
 }
