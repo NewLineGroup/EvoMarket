@@ -6,5 +6,5 @@ namespace EvoMarket.Payment.Service.Service;
 
 public interface IClientAccountService
 {
-    ValueTask<TransactionUpdateDto> TransferToTheBalance(ClientAccountCreateDto account);
+    ValueTask<TransactionUpdateDto> TransferToTheBalanceAsync(ClientAccountCreateDto account);
 }

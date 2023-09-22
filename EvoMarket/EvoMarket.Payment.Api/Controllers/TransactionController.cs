@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Dto.Payment.AccountDto;
 using Domain.Dto.Payment.TransactionDto;
 using Domain.Entities.Payment;
 using EvoMarket.Payment.Infrastructure.Intercafes;
@@ -44,11 +45,11 @@ public class TransactionController :ControllerBase
             Time = DateTime.Now
         };
         
-        await  this._transactionService.Transaction(transactionCreateDto);
+        await  this._transactionService.TransactionAsync(transactionCreateDto);
         return client;
     }
 
-    [HttpGet("search/time/")]
+    [HttpGet("filter/time/")]
     public async ValueTask<ApiResult<IEnumerable<Transaction>>> GetTransactionsByTime(TransactionGetByTimeDto transactionGetByTimeDto)
     {
         this._logger.LogInformation("TransactionController in GetTransactionsByTime method is Working");
@@ -58,4 +59,17 @@ public class TransactionController :ControllerBase
             transactionGetByTimeDto.EndTime);
        return result.ToList();
     }
+
+    [HttpGet("filter/accountid-and-time/")]
+    public async ValueTask<ApiResult<TransactionsResponseDto>> GetByIdAndTimeTransactions(TransactionsRequestDto transactionsRequestDto)
+    {
+        if (transactionsRequestDto is null)
+        {
+            return ("transactionsRequestDto is null", 404);
+        }
+
+        return await _transactionService.GetByIdAndTimeAsync(transactionsRequestDto);
+    }
+    
+
 }

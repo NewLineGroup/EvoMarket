@@ -25,7 +25,7 @@ public class TransactionService : ITransactionService
 
 
 
-    public async ValueTask<TransactionsResponseDto> GetByIdAndTime(TransactionsRequestDto transactionsRequestDto)
+    public async ValueTask<TransactionsResponseDto> GetByIdAndTimeAsync(TransactionsRequestDto transactionsRequestDto)
     {
         var clientAccount =await _clientAccountRepository.GetByIdAsync(transactionsRequestDto.ClientAccountId);
         if (clientAccount is null)
@@ -69,7 +69,7 @@ public class TransactionService : ITransactionService
     }
 
 
-    public async ValueTask<TransactionUpdateDto> Transaction(TransactionCreateDto transactionCreateDto)
+    public async ValueTask<TransactionUpdateDto> TransactionAsync(TransactionCreateDto transactionCreateDto)
     {
         var result = new Transaction()
         {
