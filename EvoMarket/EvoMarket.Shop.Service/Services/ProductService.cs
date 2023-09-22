@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Domain.Dto.ShopDto;
 using Domain.Entities.Shops;
 using EvoMarket.Shop.Service.Interfaces;
