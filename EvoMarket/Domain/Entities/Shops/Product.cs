@@ -12,7 +12,7 @@ public class Product : AuditableModelBase
     [Column("thumb_image_url")] public string ThumbImageUrl { get; set; }
     [Column("rate")] public float Rate { get; set; }
     [Column("discount_price")] public decimal? DiscountPrice { get; set; }
-    [Column("category_id"), ForeignKey(nameof(Category))] public int CategoryId { get; set; }
+    [Column("category_id"), ForeignKey(nameof(Category))] public long CategoryId { get; set; }
     public Category Category { get; set; }
     [Column("min_age")] public int MinAge { get; set; }
     
