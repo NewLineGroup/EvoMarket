@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EvoMarket.Notification.Infrastructures.Repositories;
 
-public class NotificationRepository : RepositoryBase<ClientNotifications> , INotificationRepository
+public class NotificationRepository : RepositoryBase<ClientNotification> , INotificationRepository
     
 {
     public NotificationRepository(DbContext context) : base(context)
