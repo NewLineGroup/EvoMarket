@@ -21,7 +21,7 @@ public abstract class MyControllerBase<T> : ControllerBase where T : ModelBase
     public async ValueTask<ApiResult<IEnumerable<T>>> GetAllAsync()
         => ApiResult<T>.FromIEnumerable(await _repositoryBase.GetAllAsync());
 
-    [HttpGet("get_by_id{id:long}")]
+    [HttpGet("getbyid{id:long}")]
     public async ValueTask<ApiResult<T>> GetByIdAsync(long id)
         => await _repositoryBase.GetByIdAsync(id);
     

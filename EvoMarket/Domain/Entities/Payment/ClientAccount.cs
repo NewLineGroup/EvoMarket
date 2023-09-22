@@ -5,7 +5,8 @@ using Domain.Entities.Shops;
 namespace Domain.Entities.Payment;
 
 [Table("client_account" , Schema = "payment")]
-public class ClientAccount : AuditableModelBase
+public class 
+    ClientAccount : AuditableModelBase
 {
    
     [Column("balance")]
