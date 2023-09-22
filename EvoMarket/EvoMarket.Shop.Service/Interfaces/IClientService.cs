@@ -1,4 +1,5 @@
 using Domain.Dto.ShopDto;
+using System.Threading.Tasks;
 using Domain.Entities.Shops;
 
 namespace EvoMarket.Shop.Service.Interfaces;

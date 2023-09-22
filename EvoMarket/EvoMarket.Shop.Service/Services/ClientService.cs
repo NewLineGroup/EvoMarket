@@ -1,4 +1,5 @@
 using Domain.Dto.ShopDto;
+using System.Threading.Tasks;
 using Domain.Entities.Shops;
 using EvoMarket.Shop.Service.Interfaces;
 using EvoMarket.WebCore.Repositories;
