@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Domain.Dto.Payment.AccountDto;
 using Domain.Dto.Payment.TransactionDto;
 using Domain.Entities.Payment;
 using EvoMarket.Infrastructure.DbContexts;
@@ -18,6 +21,51 @@ public class TransactionService : ITransactionService
         _transactionRepository = transactionRepository;
         _clientAccountRepository = clientAccountRepository;
         _context = context;
+    }
+
+
+
+    public async ValueTask<TransactionsResponseDto> GetByIdAndTime(TransactionsRequestDto transactionsRequestDto)
+    {
+        var clientAccount =await _clientAccountRepository.GetByIdAsync(transactionsRequestDto.ClientAccountId);
+        if (clientAccount is null)
+        {
+            throw new Exception("Client Account not fount");
+        }
+
+        if (transactionsRequestDto.BeginTime > transactionsRequestDto.EndTime)
+        {
+            throw new Exception("the time range is not specified correctly (TransactionService)");
+        }
+
+        var transactions =  _transactionRepository.
+            DbGetSet().
+            Where(x=>x.AccountId==transactionsRequestDto.ClientAccountId && 
+                     x.Time>transactionsRequestDto.BeginTime && 
+                     x.Time<transactionsRequestDto.EndTime).
+            ToArray();
+
+        var transactionDtos = new TransactionUpdateDto[transactions.Length];
+        
+        for (int i=0;i<transactions.Length;i++)
+        {
+            transactionDtos[i]=(new TransactionUpdateDto()
+            {
+                Amount = transactions[i].Amount,
+                Id = transactions[i].Id,
+                Success = transactions[i].Success,
+                Time = transactions[i].Time
+            });
+        }
+
+
+        return new TransactionsResponseDto()
+        {
+            BeginTime = transactionsRequestDto.BeginTime,
+            EndTime = transactionsRequestDto.EndTime,
+            ClientAccountId = transactionsRequestDto.ClientAccountId,
+            Transactions = transactionDtos
+        };
     }
 
 
