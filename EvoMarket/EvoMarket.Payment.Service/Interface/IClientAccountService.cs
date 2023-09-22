@@ -1,6 +1,10 @@
+using System.Threading.Tasks;
+using Domain.Dto.Payment.AccountDto;
+using Domain.Dto.Payment.TransactionDto;
+
 namespace EvoMarket.Payment.Service.Service;
 
-public class IClientAccountService
+public interface IClientAccountService
 {
-    
+    ValueTask<TransactionUpdateDto> TransferToTheBalance(ClientAccountCreateDto account);
 }
