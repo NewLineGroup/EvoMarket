@@ -1,16 +1,26 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Entities.Shops;
 
-namespace Domain.Payment.Models;
+namespace Domain.Entities.Payment;
 
-[Table("client_account")]
-public class ClientAccount :  ModelBase
+[Table("client_account" , Schema = "payment")]
+public class 
+    ClientAccount : AuditableModelBase
 {
-    [Required]
-    [Column("client_id")]
-    public long ClientId { get; set; }
+   
     [Column("balance")]
     public decimal Balance { get; set; }
     [Column("is_freeze")]
     public bool IsFreeze { get; set; }
+    
+    [Column("client_id")]
+    public long ClientId { get; set; }
+    
+    [NotMapped]
+    public Client Client { get; set; }
+
+    [NotMapped]
+    public ICollection<Transaction> Transactions { get; set; }
+    
 }

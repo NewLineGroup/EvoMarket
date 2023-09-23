@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EvoMarket.Infrastructure\EvoMarket.Infrastructure.csproj" />
+      <ProjectReference Include="..\EvoMarket.Notification.Services\EvoMarket.Notification.Services.csproj" />
+      <ProjectReference Include="..\EvoMarket.Shop.Service\EvoMarket.Shop.Service.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.11" />
+    </ItemGroup>
+</Project>
