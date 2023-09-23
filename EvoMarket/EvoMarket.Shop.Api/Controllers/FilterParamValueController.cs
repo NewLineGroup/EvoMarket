@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Shop.Interfaces;
 
 namespace EvoMarket.Shop.Api.Controllers;
-
+[ApiController]
+[Route("filterparamvalues")]
 public class FilterParamValueController:MyControllerBase<FilterParamValue>
 {
     private readonly IFilterParamValueRepository _repository;
