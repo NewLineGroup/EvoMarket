@@ -31,4 +31,10 @@ public class ProductController:MyControllerBase<Product>
     {
         return await _service.UpdateAsync(data);
     }
+
+    [HttpGet(nameof(GetByFilters))]
+    public async Task<IEnumerable<Product>> GetByFilters([FromBody] FilterDto filter)
+    {
+        return await _service.GetByFilters(filter);
+    }
 }
