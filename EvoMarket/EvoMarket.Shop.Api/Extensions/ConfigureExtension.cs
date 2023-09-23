@@ -1,5 +1,7 @@
 
 using EvoMarket.Infrastructure.DbContexts;
+using EvoMarket.Shop.Service.Interfaces;
+using EvoMarket.Shop.Service.Services;
 using Microsoft.EntityFrameworkCore;
 using Shop.Interfaces;
 using Shop.Repositories;
@@ -19,6 +21,7 @@ public static class ConfigureExtension
     
     public static void ConfigureRepositories(this IServiceCollection serviceCollection)
     {
+        // repositories
         serviceCollection.AddScoped<ICartRepository, CartRepository>();
         serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
         serviceCollection.AddScoped<ICategoryFilterRepository, CategoryFilterRepository>();
@@ -26,6 +29,16 @@ public static class ConfigureExtension
         serviceCollection.AddScoped<IFilterParamRepository, FilterParamRepository>();
         serviceCollection.AddScoped<IFilterParamValueRepository, FilterParamValueRepository>();
         serviceCollection.AddScoped<IProductRepository, ProductRepository>();
+        
+        //services
+        serviceCollection.AddScoped<ICartService, CartService>();
+        serviceCollection.AddScoped<ICategoryFilterService, CategoryFilterService>();
+        serviceCollection.AddScoped<ICategoryService, CategoryService>();
+        serviceCollection.AddScoped<IClientService, ClientService>();
+        serviceCollection.AddScoped<IFilterParamService, FilterParamService>();
+        serviceCollection.AddScoped<IFilterParamValueService, FilterParamValueService>();
+        serviceCollection.AddScoped<IProductService, ProductService>();
+        
         
     }
 }
