@@ -14,8 +14,8 @@ public abstract class BaseController<T>: ControllerBase where T : ModelBase
     }
 
     [HttpGet]
-    public async ValueTask<IEnumerable<T>> GetAllAsync()
-        => await _repositoryBase.GetAllAsync();
+    public async ValueTask<List<T>> GetAllAsync()
+        => (List<T>)_repositoryBase.GetAllAsync().Result;
 
     [HttpGet("get_by_id/{id:long}")]
     public async ValueTask<T> GetByIdAsync(long id)

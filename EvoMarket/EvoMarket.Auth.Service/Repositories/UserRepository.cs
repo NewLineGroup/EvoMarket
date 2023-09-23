@@ -1,5 +1,6 @@
 using Domain.Entities.Auth;
 using EvoMarket.Auth.Service.Interfaces.RepositoryInterfaces;
+using EvoMarket.Infrastructure.DbContexts;
 using EvoMarket.WebCore.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,7 @@ namespace EvoMarket.Auth.Service.Repositories;
 
 public class UserRepository:RepositoryBase<User>,IUserRepository
 {
-    public UserRepository(DbContext context) : base(context)
+    public UserRepository(DataContext context) : base(context)
     {
     }
 
