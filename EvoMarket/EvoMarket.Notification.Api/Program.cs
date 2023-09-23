@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.UseUrls(builder.Configuration.GetSection("Urels:Host").Get<string>());
+builder.WebHost.UseUrls(builder.Configuration.GetSection("Urls:Host").Get<string>());
 
 // Add services to the container.
 builder.Services.AddDbContext<DataContext>(options =>
