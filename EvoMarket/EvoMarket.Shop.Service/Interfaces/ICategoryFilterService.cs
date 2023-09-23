@@ -5,5 +5,5 @@ namespace EvoMarket.Shop.Service.Interfaces;
 
 public interface ICategoryFilterService : IServiceBase<ICategoryFilterService>
 {
-    public ValueTask<CategoryFilter> CreateCategoryFilterAsync(CategoryFilterDto dto);
+    public ValueTask<CategoryFilter> CreateCategoryFilterAsync(CategoryFilterCreateDto createDto);
 }

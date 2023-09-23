@@ -13,13 +13,13 @@ public class CategoryFilterService : ServiceBase<CategoryFilter>, ICategoryFilte
     {
     }
 
-    public async ValueTask<CategoryFilter> CreateCategoryFilterAsync(CategoryFilterDto dto)
+    public async ValueTask<CategoryFilter> CreateCategoryFilterAsync(CategoryFilterCreateDto createDto)
     {
         CategoryFilter categoryFilter = new CategoryFilter
         {
-            CategoryId = dto.CategoryId,
-            FilterPramId = dto.FilterParamId,
-            Value = dto.CategoryName
+            CategoryId = createDto.CategoryId,
+            FilterPramId = createDto.FilterParamId,
+            Value = createDto.CategoryName
         };
         return await _repositoryBase.CreatAsync(categoryFilter);
     }
