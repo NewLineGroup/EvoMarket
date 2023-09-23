@@ -9,9 +9,7 @@ namespace EvoMarket.Infrastructure.DbContexts;
 
 public class DataContext : DbContext
 {
-    [Column("users")]
     public DbSet<User> Users { get; set; }
-    [Column("user_devices")]
     public DbSet<Device> UserDevices { get; set; }
     public DbSet<ClientNotification> ClientNotifications { get; set; }
     public DbSet<Cart> Carts { get; set; }
