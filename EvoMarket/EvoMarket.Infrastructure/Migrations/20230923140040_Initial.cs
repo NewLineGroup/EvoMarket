@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -19,50 +20,12 @@ namespace EvoMarket.Infrastructure.Migrations
                 name: "payment");
 
             migrationBuilder.CreateTable(
-                name: "carts",
-                schema: "shop",
-                columns: table => new
-                {
-                    id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    total_amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    total_count = table.Column<int>(type: "integer", nullable: false),
-                    client_id = table.Column<long>(type: "bigint", nullable: false),
-                    transaction_id = table.Column<long>(type: "bigint", nullable: false),
-                    closed = table.Column<bool>(type: "boolean", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_carts", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "categories",
-                schema: "shop",
-                columns: table => new
-                {
-                    id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    title = table.Column<string>(type: "text", nullable: false),
-                    image_url = table.Column<string>(type: "text", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_categories", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "client_notifications",
                 columns: table => new
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    client_id = table.Column<int>(type: "integer", nullable: false),
-                    message_data = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    client_id = table.Column<long>(type: "bigint", nullable: false),
                     message = table.Column<string>(type: "text", nullable: false),
                     received = table.Column<bool>(type: "boolean", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -99,25 +62,25 @@ namespace EvoMarket.Infrastructure.Migrations
                 name: "devices",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "bigint", nullable: false)
+                    user_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    user_id = table.Column<int>(type: "integer", nullable: false),
                     ip = table.Column<string>(type: "text", nullable: false),
                     device_name = table.Column<string>(type: "text", nullable: false),
                     last_login_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    device_id = table.Column<long>(type: "bigint", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_devices", x => x.id);
+                    table.PrimaryKey("user_id", x => x.user_id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "users",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "bigint", nullable: false)
+                    user_id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     email = table.Column<string>(type: "text", nullable: false),
                     password_hash_string = table.Column<string>(type: "text", nullable: false),
@@ -129,38 +92,7 @@ namespace EvoMarket.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_users", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "products",
-                schema: "shop",
-                columns: table => new
-                {
-                    id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    title = table.Column<string>(type: "text", nullable: false),
-                    price = table.Column<decimal>(type: "numeric", nullable: false),
-                    quantity = table.Column<float>(type: "real", nullable: false),
-                    image_url = table.Column<string>(type: "text", nullable: false),
-                    thumb_image_url = table.Column<string>(type: "text", nullable: false),
-                    rate = table.Column<float>(type: "real", nullable: false),
-                    discount_price = table.Column<decimal>(type: "numeric", nullable: true),
-                    category_id = table.Column<int>(type: "integer", nullable: false),
-                    min_age = table.Column<int>(type: "integer", nullable: false),
-                    CategoryId1 = table.Column<long>(type: "bigint", nullable: true),
-                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_products", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_products_categories_CategoryId1",
-                        column: x => x.CategoryId1,
-                        principalSchema: "shop",
-                        principalTable: "categories",
-                        principalColumn: "id");
+                    table.PrimaryKey("PK_users", x => x.user_id);
                 });
 
             migrationBuilder.CreateTable(
@@ -215,6 +147,81 @@ namespace EvoMarket.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "carts",
+                schema: "shop",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    total_amount = table.Column<decimal>(type: "numeric", nullable: false),
+                    total_count = table.Column<int>(type: "integer", nullable: false),
+                    client_id = table.Column<long>(type: "bigint", nullable: false),
+                    transaction_id = table.Column<long>(type: "bigint", nullable: false),
+                    closed = table.Column<bool>(type: "boolean", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_carts", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_carts_clients_client_id",
+                        column: x => x.client_id,
+                        principalSchema: "shop",
+                        principalTable: "clients",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_carts_transactions_transaction_id",
+                        column: x => x.transaction_id,
+                        principalSchema: "payment",
+                        principalTable: "transactions",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "cart_items",
+                schema: "shop",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    product_id = table.Column<long>(type: "bigint", nullable: false),
+                    cart_id = table.Column<long>(type: "bigint", nullable: false),
+                    quantity = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_cart_items", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_cart_items_carts_cart_id",
+                        column: x => x.cart_id,
+                        principalSchema: "shop",
+                        principalTable: "carts",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "categories",
+                schema: "shop",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    title = table.Column<string>(type: "text", nullable: false),
+                    image_url = table.Column<string>(type: "text", nullable: false),
+                    FilterParamValueId = table.Column<long>(type: "bigint", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_categories", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "category_filters",
                 schema: "shop",
                 columns: table => new
@@ -223,7 +230,6 @@ namespace EvoMarket.Infrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     category_id = table.Column<long>(type: "bigint", nullable: false),
                     filter_param_id = table.Column<long>(type: "bigint", nullable: false),
-                    FilterParamId = table.Column<long>(type: "bigint", nullable: false),
                     value = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -245,8 +251,8 @@ namespace EvoMarket.Infrastructure.Migrations
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    value = table.Column<string>(type: "text", nullable: false),
-                    CategoryFilterId = table.Column<long>(type: "bigint", nullable: true),
+                    param_name = table.Column<string>(type: "text", nullable: false),
+                    ParamValues = table.Column<List<string>>(type: "text[]", nullable: false),
                     CategoryId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
@@ -258,12 +264,37 @@ namespace EvoMarket.Infrastructure.Migrations
                         principalSchema: "shop",
                         principalTable: "categories",
                         principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "products",
+                schema: "shop",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    title = table.Column<string>(type: "text", nullable: false),
+                    price = table.Column<decimal>(type: "numeric", nullable: false),
+                    quantity = table.Column<float>(type: "real", nullable: false),
+                    image_url = table.Column<string>(type: "text", nullable: false),
+                    thumb_image_url = table.Column<string>(type: "text", nullable: false),
+                    rate = table.Column<float>(type: "real", nullable: false),
+                    discount_price = table.Column<decimal>(type: "numeric", nullable: true),
+                    category_id = table.Column<long>(type: "bigint", nullable: false),
+                    min_age = table.Column<int>(type: "integer", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_products", x => x.id);
                     table.ForeignKey(
-                        name: "FK_filter_params_category_filters_CategoryFilterId",
-                        column: x => x.CategoryFilterId,
+                        name: "FK_products_categories_category_id",
+                        column: x => x.category_id,
                         principalSchema: "shop",
-                        principalTable: "category_filters",
-                        principalColumn: "id");
+                        principalTable: "categories",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -274,11 +305,19 @@ namespace EvoMarket.Infrastructure.Migrations
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     filter_param_id = table.Column<long>(type: "bigint", nullable: false),
-                    value = table.Column<string>(type: "text", nullable: false)
+                    value = table.Column<string>(type: "text", nullable: false),
+                    CategoryFilterId = table.Column<long>(type: "bigint", nullable: true),
+                    ProductId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_filter_param_values", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_filter_param_values_category_filters_CategoryFilterId",
+                        column: x => x.CategoryFilterId,
+                        principalSchema: "shop",
+                        principalTable: "category_filters",
+                        principalColumn: "id");
                     table.ForeignKey(
                         name: "FK_filter_param_values_filter_params_filter_param_id",
                         column: x => x.filter_param_id,
@@ -286,19 +325,49 @@ namespace EvoMarket.Infrastructure.Migrations
                         principalTable: "filter_params",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_filter_param_values_products_ProductId",
+                        column: x => x.ProductId,
+                        principalSchema: "shop",
+                        principalTable: "products",
+                        principalColumn: "id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cart_items_cart_id",
+                schema: "shop",
+                table: "cart_items",
+                column: "cart_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cart_items_product_id",
+                schema: "shop",
+                table: "cart_items",
+                column: "product_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_carts_client_id",
+                schema: "shop",
+                table: "carts",
+                column: "client_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_carts_transaction_id",
+                schema: "shop",
+                table: "carts",
+                column: "transaction_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_categories_FilterParamValueId",
+                schema: "shop",
+                table: "categories",
+                column: "FilterParamValueId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_category_filters_category_id",
                 schema: "shop",
                 table: "category_filters",
                 column: "category_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_category_filters_FilterParamId",
-                schema: "shop",
-                table: "category_filters",
-                column: "FilterParamId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_client_account_client_id",
@@ -312,16 +381,28 @@ namespace EvoMarket.Infrastructure.Migrations
                 column: "received");
 
             migrationBuilder.CreateIndex(
+                name: "IX_devices_device_id",
+                table: "devices",
+                column: "device_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_filter_param_values_CategoryFilterId",
+                schema: "shop",
+                table: "filter_param_values",
+                column: "CategoryFilterId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_filter_param_values_filter_param_id",
                 schema: "shop",
                 table: "filter_param_values",
                 column: "filter_param_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_filter_params_CategoryFilterId",
+                name: "IX_filter_param_values_ProductId",
                 schema: "shop",
-                table: "filter_params",
-                column: "CategoryFilterId");
+                table: "filter_param_values",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_filter_params_CategoryId",
@@ -330,10 +411,10 @@ namespace EvoMarket.Infrastructure.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_CategoryId1",
+                name: "IX_products_category_id",
                 schema: "shop",
                 table: "products",
-                column: "CategoryId1");
+                column: "category_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_transactions_account_id",
@@ -341,37 +422,47 @@ namespace EvoMarket.Infrastructure.Migrations
                 table: "transactions",
                 column: "account_id");
 
+            migrationBuilder.CreateIndex(
+                name: "IX_users_user_id",
+                table: "users",
+                column: "user_id",
+                unique: true);
+
             migrationBuilder.AddForeignKey(
-                name: "FK_category_filters_filter_params_FilterParamId",
+                name: "FK_cart_items_products_product_id",
                 schema: "shop",
-                table: "category_filters",
-                column: "FilterParamId",
+                table: "cart_items",
+                column: "product_id",
                 principalSchema: "shop",
-                principalTable: "filter_params",
+                principalTable: "products",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_categories_filter_param_values_FilterParamValueId",
+                schema: "shop",
+                table: "categories",
+                column: "FilterParamValueId",
+                principalSchema: "shop",
+                principalTable: "filter_param_values",
+                principalColumn: "id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_category_filters_categories_category_id",
+                name: "FK_filter_param_values_products_ProductId",
                 schema: "shop",
-                table: "category_filters");
+                table: "filter_param_values");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_filter_params_categories_CategoryId",
+                name: "FK_categories_filter_param_values_FilterParamValueId",
                 schema: "shop",
-                table: "filter_params");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_category_filters_filter_params_FilterParamId",
-                schema: "shop",
-                table: "category_filters");
+                table: "categories");
 
             migrationBuilder.DropTable(
-                name: "carts",
+                name: "cart_items",
                 schema: "shop");
 
             migrationBuilder.DropTable(
@@ -381,19 +472,15 @@ namespace EvoMarket.Infrastructure.Migrations
                 name: "devices");
 
             migrationBuilder.DropTable(
-                name: "filter_param_values",
-                schema: "shop");
+                name: "users");
 
             migrationBuilder.DropTable(
-                name: "products",
+                name: "carts",
                 schema: "shop");
 
             migrationBuilder.DropTable(
                 name: "transactions",
                 schema: "payment");
-
-            migrationBuilder.DropTable(
-                name: "users");
 
             migrationBuilder.DropTable(
                 name: "client_account",
@@ -404,7 +491,15 @@ namespace EvoMarket.Infrastructure.Migrations
                 schema: "shop");
 
             migrationBuilder.DropTable(
-                name: "categories",
+                name: "products",
+                schema: "shop");
+
+            migrationBuilder.DropTable(
+                name: "filter_param_values",
+                schema: "shop");
+
+            migrationBuilder.DropTable(
+                name: "category_filters",
                 schema: "shop");
 
             migrationBuilder.DropTable(
@@ -412,7 +507,7 @@ namespace EvoMarket.Infrastructure.Migrations
                 schema: "shop");
 
             migrationBuilder.DropTable(
-                name: "category_filters",
+                name: "categories",
                 schema: "shop");
         }
     }
