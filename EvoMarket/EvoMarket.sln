@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Infrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Auth.Api", "EvoMarket.Auth.Api\EvoMarket.Auth.Api.csproj", "{34572C34-5080-4AD5-836E-3AB8855FEF5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GateWayApi", "GateWayApi\GateWayApi.csproj", "{8D34C0B7-CDB7-4987-B88D-24975AFDF851}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.GateWay.Api", "EvoMarket.GateWay.Api\EvoMarket.GateWay.Api.csproj", "{8D34C0B7-CDB7-4987-B88D-24975AFDF851}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
