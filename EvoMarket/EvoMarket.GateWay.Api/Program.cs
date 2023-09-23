@@ -3,6 +3,10 @@ using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder
+    .WebHost
+    .UseUrls(builder.Configuration.GetValue<string>("LaunchUrl") ?? "http://localhost:1200");
+
 // Add services to the container.
 
 builder.Services.AddControllers();
