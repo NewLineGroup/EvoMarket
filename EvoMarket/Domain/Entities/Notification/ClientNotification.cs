@@ -3,7 +3,7 @@ using Domain.Entities.Shops;
 
 namespace Domain.Entities.Notification;
 
-[Table("client_notifications")]
+[Table("client_notifications", Schema = "notification")]
 public class ClientNotification : AuditableModelBase
 {
     [Column("client_id")]
