@@ -21,13 +21,12 @@ public class AuthService : IAuthService
     private IHashService HashService { get; set; }
 
     public AuthService(IDeviceRepository deviceRepository, IDeviceService deviceService, IUserRepository userRepository,
-        IClientService clientService, INotificationService notificationService, IHashService hashService)
+        IClientService clientService, IHashService hashService)
     {
         DeviceRepository = deviceRepository;
         DeviceService = deviceService;
         UserRepository = userRepository;
         ClientService = clientService;
-        NotificationService = notificationService;
         HashService = hashService;
     }
 
