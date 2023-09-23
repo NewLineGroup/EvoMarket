@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder
     .WebHost
-    .UseUrls(builder.Configuration.GetValue<string>("LaunchUrl") ?? "http://localhost:1200");
+    .UseUrls(builder.Configuration.GetValue<string>("LaunchUrl"));
 
 // Add services to the container.
 
