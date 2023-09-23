@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Auth;
 
-[Table("devices")]
+[Table("devices",Schema = "auth")]
 public class Device:AuditableModelBase
 {
     [Required]

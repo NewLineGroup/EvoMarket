@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Auth;
 
-    [Table("users")]
+    [Table("users",Schema = "auth")]
     public class User:AuditableModelBase
     {
         [Required]
