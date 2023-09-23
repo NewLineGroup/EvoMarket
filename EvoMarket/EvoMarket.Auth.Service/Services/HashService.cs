@@ -6,6 +6,10 @@ namespace EvoMarket.Auth.Service.Services;
 
 public class HashService:IHashService
 {
+    public HashService()
+    {
+        
+    }
     public async ValueTask<string> HashClientPassword(string password)
     {
         using (SHA256 sha256Hash = SHA256.Create())
