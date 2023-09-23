@@ -15,4 +15,6 @@ public class DeviceController : BaseController<Device>
     {
         _repository = repository;
     }
+
+   
 }

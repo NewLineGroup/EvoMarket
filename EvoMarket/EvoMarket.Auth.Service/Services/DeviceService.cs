@@ -1,21 +1,23 @@
 using Domain.Entities.Auth;
+using EvoMarket.Auth.Service.Interfaces.RepositoryInterfaces;
 using EvoMarket.Auth.Service.Interfaces.ServiceInterfaces;
 using EvoMarket.Auth.Service.Repositories;
+using EvoMarket.WebCore.Interfaces;
 using EvoMarket.WebCore.Repositories;
 
 namespace EvoMarket.Auth.Service.Services;
 
 public class DeviceService:IDeviceService
 {
-    private DeviceRepository DeviceRepository { get; set; }
-    public DeviceService(RepositoryBase<Device> repositoryBase) 
+    private IDeviceRepository _deviceRepository { get; set; }
+    public DeviceService(IDeviceRepository repositoryBase) 
     {
-        DeviceRepository =(DeviceRepository) repositoryBase;
+        _deviceRepository = repositoryBase;
     }
 
     public async ValueTask<bool> CheckDevicesCount(int userId)
     {
-        var devices =await DeviceRepository.GetUserDevices(userId);
+        var devices =await _deviceRepository.GetUserDevices(userId);
         if (devices.Count>3)
         {
             return true;
@@ -25,11 +27,11 @@ public class DeviceService:IDeviceService
 
     public async ValueTask<Device> DeleteDeviceByCreatedDate(int userId)
     {
-        var devices =await DeviceRepository.GetUserDevices(userId);
+        var devices =await _deviceRepository.GetUserDevices(userId);
         if (devices.Count>3)
         {
             var minDeviceId = devices.MinBy(device => device.LastLoginDate)!.Id;
-           return await DeviceRepository.DeleteAsync((int)minDeviceId);
+           return await _deviceRepository.DeleteAsync((int)minDeviceId);
         }
 
         throw new Exception("The number of devices is less than 3");
@@ -37,7 +39,7 @@ public class DeviceService:IDeviceService
 
     public async ValueTask<Device?> GetDeviceByDeviceName(string deviceName, string deviceIp)
     {
-        var devices =await DeviceRepository.GetAllAsync();
+        var devices =await _deviceRepository.GetAllAsync();
 
         return devices.FirstOrDefault(device => device.DeviceName == deviceName && device.Ip == deviceIp);
 

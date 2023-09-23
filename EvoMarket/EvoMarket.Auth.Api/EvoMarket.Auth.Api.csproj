@@ -18,4 +18,10 @@
       <ProjectReference Include="..\EvoMarket.WebCore\EvoMarket.WebCore.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Device\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\User\Index.cshtml" />
+    </ItemGroup>
+
 </Project>
