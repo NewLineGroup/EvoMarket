@@ -1,5 +1,9 @@
+
 {
-  "Logging": {
+  "ConnectionStrings": {
+    "DefaultConnectionString": "Host=213.230.65.55; Port=5444; Database=Shop; username=notification_user; password=4466"
+  },
+    "Logging": {
     "LogLevel": {
       "Default": "Information",
       "Microsoft.AspNetCore": "Warning"
