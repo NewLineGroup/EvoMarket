@@ -1,5 +1,6 @@
 ﻿using Domain.Dto.ShopDto;
 using Domain.Entities.Shops;
+using EvoMarket.Shop.Service.Interfaces;
 using EvoMarket.WebCore;
 using EvoMarket.WebCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -11,31 +12,22 @@ namespace EvoMarket.Shop.Api.Controllers;
 public class CategoryController : MyControllerBase<Category>
 {
     private readonly ICategoryRepository _repository;
-    public CategoryController(ICategoryRepository repository) : base(repository)
+    private readonly ICategoryService _service;
+
+    public CategoryController(ICategoryRepository repository,ICategoryService service) : base(repository)
     {
         _repository = repository;
+        _service = service;
     }
 
     [HttpPost("create")]
     public async ValueTask<ApiResult<Category>> CreateAsync(CategoryCreateDto data)
     {
-        Category category = new Category
-        {
-            CreatedAt = DateTime.Now,
-            Title = data.Title,
-            ImageUrl = data.ImageUrl,
-        };
-        return await _repository.CreatAsync(category);
+        return await _service.CreatAsync(data);
     }
     [HttpPut("update")]
     public async ValueTask<ApiResult<Category>> UpdateAsync(CategoryUpdateDto data)
     {
-        Category category = new Category
-        {
-            UpdatedAt = DateTime.Now,
-            Title = data.Title,
-            ImageUrl = data.ImageUrl,
-        };
-        return await _repository.UpdateAsync(category);
+        return await _service.UpdateAsync(data);
     }
 }
