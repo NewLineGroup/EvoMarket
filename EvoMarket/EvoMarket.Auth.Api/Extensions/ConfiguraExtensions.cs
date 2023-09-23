@@ -1,4 +1,3 @@
-using System.Net.Mail;
 using EvoMarket.Auth.Service.Interfaces;
 using EvoMarket.Auth.Service.Interfaces.RepositoryInterfaces;
 using EvoMarket.Auth.Service.Interfaces.ServiceInterfaces;
@@ -40,11 +39,6 @@ public static class ConfiguraExtensions
         serviceCollection.AddScoped<IDeviceService, DeviceService>(); 
         serviceCollection.AddScoped<IClientRepository, ClientRepository>(); 
         serviceCollection.AddScoped<IClientService, ClientService>(); 
-        serviceCollection.AddScoped<SmtpClient>(provider => {
-            var smtpClient = new SmtpClient();
-   
-            return smtpClient;
-        });
         serviceCollection.AddScoped<INotificationRepository, NotificationRepository>(); 
         serviceCollection.AddScoped<INotificationService, NotificationService>(); 
     } 
