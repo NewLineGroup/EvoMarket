@@ -1,20 +1,34 @@
 using Domain.Dto.Auth;
 using Domain.Entities.Auth;
+using EvoMarket.Auth.Service.Interfaces;
+using EvoMarket.Auth.Service.Interfaces.RepositoryInterfaces;
 using EvoMarket.Auth.Service.Interfaces.ServiceInterfaces;
 using EvoMarket.Auth.Service.Repositories;
+using EvoMarket.Notification.Services.Interfaces;
 using EvoMarket.Notification.Services.Services;
+using EvoMarket.Shop.Service.Interfaces;
 using EvoMarket.Shop.Service.Services;
 
 namespace EvoMarket.Auth.Service.Services;
 
 public class AuthService:IAuthService
 {
-    private DeviceRepository DeviceRepository { get; set; }
-    private DeviceService DeviceService { get; set; }
-    private UserRepository UserRepository { get; set; }
-    private ClientService ClientService { get; set; }
-    private NotificationService NotificationService { get; set; }
-    private HashService HashService { get; set; }
+    private IDeviceRepository DeviceRepository { get; set; }
+    private IDeviceService DeviceService { get; set; }
+    private IUserRepository UserRepository { get; set; }
+    private IClientService ClientService { get; set; }
+    private INotificationService NotificationService { get; set; }
+    private IHashService HashService { get; set; }
+
+    public AuthService(IDeviceRepository deviceRepository, IDeviceService deviceService, IUserRepository userRepository, IClientService clientService, INotificationService notificationService, IHashService hashService)
+    {
+        DeviceRepository = deviceRepository;
+        DeviceService = deviceService;
+        UserRepository = userRepository;
+        ClientService = clientService;
+        NotificationService = notificationService;
+        HashService = hashService;
+    }
  
     public async ValueTask<UserDto> Registration(UserDto user, string otp,Device device)
     {

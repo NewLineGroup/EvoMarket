@@ -1,4 +1,5 @@
 using EvoMarket.Auth.Api.Extensions;
+using EvoMarket.Infrastructure.DbContexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureDbContexts(builder.Configuration);
 builder.Services.ConfigureRepositories();
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
