@@ -12,11 +12,9 @@ namespace EvoMarket.Shop.Service.Services;
 
 public class ProductService : ServiceBase<Product>, IProductService
 {
-    protected readonly IProductRepository _repository;
     protected readonly IClientRepository _clientRepository;
     public ProductService(IProductRepository repository, IClientRepository clientRepository) : base(repository)
     {
-        _repository = repository;
         _clientRepository = clientRepository;
     }
 
@@ -69,7 +67,7 @@ public class ProductService : ServiceBase<Product>, IProductService
             CategoryId = data.CategoryId,
             MinAge = data.MinAge
         };
-        return await _repository.CreatAsync(product);
+        return await _repositoryBase.CreatAsync(product);
     }
 
     /// <summary>
@@ -93,7 +91,7 @@ public class ProductService : ServiceBase<Product>, IProductService
             MinAge = data.MinAge
         };
         
-            return await _repository.UpdateAsync(product);
+            return await _repositoryBase.UpdateAsync(product);
     }
     
     /// <summary>
@@ -104,7 +102,7 @@ public class ProductService : ServiceBase<Product>, IProductService
     /// <returns></returns>
     public async ValueTask<Product> CheckClientAge(long productId, long clientId)
     {
-        var product = await this._repository.GetByIdAsync(productId);
+        var product = await this._repositoryBase.GetByIdAsync(productId);
         var client =await _clientRepository.GetByIdAsync(clientId);
         if (product.MinAge <= client.Age)
             return product;
@@ -120,7 +118,7 @@ public class ProductService : ServiceBase<Product>, IProductService
     /// <returns></returns>
     public async ValueTask<Product> GetProductsByRating(long productId, float raiting)
     {
-        Product product = await _repository.GetByIdAsync(productId);
+        Product product = await _repositoryBase.GetByIdAsync(productId);
         if (product.Rate == 0)
         {
             product.Rate = raiting;
@@ -130,7 +128,7 @@ public class ProductService : ServiceBase<Product>, IProductService
             product.Rate = (product.Rate + raiting) / 2;
         }
         
-        return await _repository.UpdateAsync(product);
+        return await _repositoryBase.UpdateAsync(product);
     }
     
     /// <summary>
@@ -139,10 +137,10 @@ public class ProductService : ServiceBase<Product>, IProductService
     /// <returns></returns>
     public async ValueTask<Product> DiscountProducts(long productId, decimal discountPrice)
     {
-        Product product = await _repository.GetByIdAsync(productId);
+        Product product = await _repositoryBase.GetByIdAsync(productId);
 
         product.DiscountPrice = discountPrice;
-        return await _repository.UpdateAsync(product);
+        return await _repositoryBase.UpdateAsync(product);
     }
 
     /// <summary>
@@ -151,7 +149,7 @@ public class ProductService : ServiceBase<Product>, IProductService
     /// <returns></returns>
     public async ValueTask<Product> ProductCategoryFilter(long productCategoryId)
     {
-        Product product = await _repository.GetByIdAsync(productCategoryId);
+        Product product = await _repositoryBase.GetByIdAsync(productCategoryId);
 
         if (product.CategoryId != productCategoryId)
             throw new Exception("Product Not Found");
@@ -169,4 +167,17 @@ public class ProductService : ServiceBase<Product>, IProductService
         return null;
     }
     
+    public async ValueTask<Product> CheckProductQuantity(long productId,int quantity)
+    {
+        Product product = await _repositoryBase.GetByIdAsync(productId);
+        
+        if (product.Quantity < quantity)
+        {
+            throw new Exception("Not enough available Product quantity");
+        }
+        else
+        {
+           return product;
+        }
+    }
 }

@@ -11,15 +11,13 @@ namespace EvoMarket.Shop.Service.Services;
 
 public class ClientService : ServiceBase<Client>, IClientService
 {
-    private IClientRepository _repository;
     public ClientService(IClientRepository repository) : base(repository)
     {
-        _repository = repository;
     }
 
     public async ValueTask<long> GetNewClientId()
     {
-        Client client = await _repository.CreatAsync(new Client());
+        Client client = await _repositoryBase.CreatAsync(new Client());
         return client.Id;
     }
 
@@ -35,7 +33,7 @@ public class ClientService : ServiceBase<Client>, IClientService
             ProfileImage = data.ProfileImage,
             Age = data.Age
         };
-        return await _repository.CreatAsync(client);
+        return await _repositoryBase.CreatAsync(client);
     }
     
     public async ValueTask<Client> UpdateAsync(ClientUpdateDto data)
@@ -50,6 +48,6 @@ public class ClientService : ServiceBase<Client>, IClientService
             ProfileImage = data.ProfileImage,
             Age = data.Age
         };
-        return await _repository.UpdateAsync(client);
+        return await _repositoryBase.UpdateAsync(client);
     }
 }
