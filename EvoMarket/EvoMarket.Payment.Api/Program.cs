@@ -20,6 +20,10 @@ builder.Host.ConfigureHostConfiguration(configurationBuilder =>
 });
 
 
+builder.WebHost
+    .UseUrls("http://localhost:1211");
+
+
 //add serilog 
 var logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
