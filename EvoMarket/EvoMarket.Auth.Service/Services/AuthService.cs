@@ -30,7 +30,7 @@ public class AuthService:IAuthService
         HashService = hashService;
     }
  
-    public async ValueTask<UserDto> Registration(UserDto user, string otp,Device device)
+    public async ValueTask<UserDto> Registration(UserDto user, string otp)
     {
         var devices = await DeviceRepository.GetUserDevices(user.Id);
         
@@ -48,20 +48,21 @@ public class AuthService:IAuthService
                 Otp = otp,
                 ExpireDate = DateTime.Now.AddMinutes(1)
             });
+          await DeviceRepository.CreatAsync(user.Device);
            return user;
         }
         else
             throw new Exception("Otp in not valid");
     }
 
-    public async ValueTask<bool> Login(UserDto userDto,Device device)
+    public async ValueTask<bool> Login(UserDto userDto)
     {
       var user= await UserRepository.GetUserByEmailPassword(userDto.Email, userDto.Otp);
       var devices = await DeviceRepository.GetUserDevices(userDto.Id);
 
       if (user is not null)
       {
-          Device? foundDevice = await DeviceService.GetDeviceByDeviceName(device.DeviceName, device.Ip);
+          Device? foundDevice = await DeviceService.GetDeviceByDeviceName(userDto.Device.DeviceName, userDto.Device.Ip);
           if (foundDevice is not null)
           {
               string message =$"Access to your account was detected on {DateTime.Now}./n If it's not you, you can cancel the session";
