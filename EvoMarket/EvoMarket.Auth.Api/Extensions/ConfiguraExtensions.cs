@@ -39,7 +39,7 @@ public static class ConfiguraExtensions
         serviceCollection.AddScoped<IDeviceService, DeviceService>(); 
         serviceCollection.AddScoped<IClientRepository, ClientRepository>(); 
         serviceCollection.AddScoped<IClientService, ClientService>(); 
-        serviceCollection.AddScoped<INotificationRepository, NotificationRepository>(); 
-        serviceCollection.AddScoped<INotificationService, NotificationService>(); 
+        // serviceCollection.AddScoped<INotificationRepository, NotificationRepository>(); 
+        // serviceCollection.AddScoped<INotificationService, NotificationService>(); 
     } 
 }

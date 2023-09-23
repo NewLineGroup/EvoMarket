@@ -4,9 +4,5 @@
       "Default": "Information",
       "Microsoft.AspNetCore": "Warning"
     }
-  },
-  "Urls": {
-    "WebHost": "http://localhost:2505"
-  },
-  "AllowedHosts": "*"
+  }
 }

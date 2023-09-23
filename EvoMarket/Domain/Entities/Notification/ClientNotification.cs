@@ -16,6 +16,7 @@ public class ClientNotification : AuditableModelBase
     [Column("message")]
     public string message { get; set; }
 
-    [Column("received")] public bool Received { get; set; } = false;
+    [Column("received")] 
+    public bool Received { get; set; } = false;
 
 }

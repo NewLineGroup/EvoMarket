@@ -15,10 +15,13 @@ builder.Services.ConfigureRepositories();
 // Add services to the container.
 builder.Host.ConfigureHostConfiguration(configurationBuilder =>
 {
-         configurationBuilder.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true,
+    configurationBuilder.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true,
         reloadOnChange: true);
 });
 
+
+builder.WebHost
+    .UseUrls("http://localhost:1211");
 
 //add serilog 
 var logger = new LoggerConfiguration()
@@ -38,11 +41,9 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

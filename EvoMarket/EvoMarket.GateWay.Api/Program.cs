@@ -1,28 +1,23 @@
-using EvoMarket.Shop.Api.Extensions;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.UseUrls(builder.Configuration.GetSection("Urls:WebHost").Get<string>());    
-    
+builder
+    .WebHost
+    .UseUrls(builder.Configuration.GetValue<string>("LaunchUrl") ?? "http://localhost:1200");
+
 // Add services to the container.
-
-builder.Services.ConfigureDbContexts(builder.Configuration);
-builder.Services.ConfigureRepositories();
-
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
-
+builder.Services.AddOcelot();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
-app.UseSwagger();
-app.UseSwaggerUI();
+app.UseOcelot();
 
 app.UseHttpsRedirection();
 
