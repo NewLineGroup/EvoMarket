@@ -34,4 +34,18 @@ public class CartService : ServiceBase<Cart>, ICartService
         };
         return await base._repositoryBase.UpdateAsync(cart);
     }
+
+    public async ValueTask<Cart> GetCartByClientId(long clientId)
+    {
+        var cart = await _repositoryBase.GetByIdAsync(clientId);
+        if (cart is null)
+        {
+           return await _repositoryBase.CreatAsync(new Cart()
+            {
+                ClientId = clientId
+            });
+        }
+
+        return cart;
+    }
 }

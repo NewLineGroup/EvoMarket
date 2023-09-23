@@ -7,11 +7,8 @@ namespace EvoMarket.Shop.Service.Services;
 
 public class CategoryService : ServiceBase<Category>, ICategoryService
 {
-    private readonly ICategoryRepository _repository;
-
     public CategoryService(ICategoryRepository repository) : base(repository)
     {
-        _repository = repository;
     }
 
     public async ValueTask<Category> CreatAsync(CategoryCreateDto data)

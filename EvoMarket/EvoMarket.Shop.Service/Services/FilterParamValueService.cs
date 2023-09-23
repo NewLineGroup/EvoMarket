@@ -2,12 +2,13 @@ using Domain.Dto.ShopDto;
 using Domain.Entities.Shops;
 using EvoMarket.Shop.Service.Interfaces;
 using EvoMarket.WebCore.Interfaces;
+using Shop.Interfaces;
 
 namespace EvoMarket.Shop.Service.Services;
 
 public class FilterParamValueService : ServiceBase<FilterParamValue>,IFilterParamValueService
 {
-    public FilterParamValueService(IRepositoryBase<FilterParamValue> repositoryBase) : base(repositoryBase)
+    public FilterParamValueService(IFilterParamValueRepository repository) : base(repository)
     {
     }
 
@@ -18,6 +19,6 @@ public class FilterParamValueService : ServiceBase<FilterParamValue>,IFilterPara
             FilterParamId = dto.FilterParamId,
             Value = dto.ParamValue
         };
-        return await _repositoryBase.CreatAsync(filterParamValue);
+        return await base._repositoryBase.CreatAsync(filterParamValue);
     }
 }

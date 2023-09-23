@@ -13,4 +13,5 @@ public class Cart : AuditableModelBase
     [Column("transaction_id"), ForeignKey(nameof(Transaction))] public long TransactionId { get; set; }
     public Transaction Transaction { get; set; }
     [Column("closed")] public bool Closed { get; set; }
+    public List<CartItem> CartItems { get; set; }
 }
