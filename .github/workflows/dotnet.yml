@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Checking out
-      run: cd /EvoMarket/EvoMarket.Payment.Api/
+      run: cd ../EvoMarket/EvoMarket/EvoMarket/EvoMarket.Payment.Api
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
