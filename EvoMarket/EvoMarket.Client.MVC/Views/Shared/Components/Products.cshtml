@@ -1,0 +1,8 @@
+@model ICollection<EvoMarket.Client.MVC.Models.Home.ProductModel>
+
+<div class="d-flex flex-row gap-2 w-100">
+    @foreach(var product in Model)
+    {
+        @Html.Partial("Components/ProductCard", @product)
+    }
+</div>

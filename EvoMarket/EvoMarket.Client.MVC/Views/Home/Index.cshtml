@@ -1,0 +1,13 @@
+@model EvoMarket.Client.MVC.Models.Home.HomeViewModel
+@{
+    Layout = "_Layout";
+}
+
+<h1>Top products</h1>
+@Html.Partial("Components/Products", Model.TopProducts);
+
+<h2>Body</h2>
+<h2>Any section</h2>
+
+
+@Html.Partial("Components/Products", Model.TopProducts);
