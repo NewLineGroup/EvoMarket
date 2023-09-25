@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EvoMarket.Shop.Api.Controllers;
 
 [ApiController]
-[Route("cartItems")]
+[Route("api-shop/cartItems")]
 public class CartItemController:MyControllerBase<CartItem>
 {
     private readonly ICartItemService _service;

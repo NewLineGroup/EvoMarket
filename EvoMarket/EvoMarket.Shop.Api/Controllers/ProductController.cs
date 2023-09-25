@@ -9,7 +9,7 @@ using Shop.Interfaces;
 namespace EvoMarket.Shop.Api.Controllers;
 
 [ApiController]
-[Route("products")]
+[Route("api-shop/products")]
 public class ProductController:MyControllerBase<Product>
 {
     private readonly IProductRepository _repository;
