@@ -18,8 +18,9 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
-
+app.UsePathBase(new PathString("/api-shop"));
 // Configure the HTTP request pipeline.
+
 
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -28,6 +29,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+// app.MapControllers();
+app.MapControllerRoute("Default", "/api-shop/{controller}/{action}");
 
 app.Run();

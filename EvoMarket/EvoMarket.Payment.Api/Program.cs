@@ -39,7 +39,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+app.UsePathBase("/api-payment");
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();

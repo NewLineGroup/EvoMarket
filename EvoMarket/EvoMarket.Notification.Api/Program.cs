@@ -33,7 +33,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+app.UsePathBase("api-notification");
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();

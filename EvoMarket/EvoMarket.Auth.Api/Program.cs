@@ -97,7 +97,7 @@ builder.Services
 
 
 var app = builder.Build();
-
+app.UsePathBase("/api-auth");
 app.UseSwagger();
 app.UseSwaggerUI();
 
