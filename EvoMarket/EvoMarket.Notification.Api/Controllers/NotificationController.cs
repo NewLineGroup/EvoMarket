@@ -15,7 +15,7 @@ public class NotificationController : Controller
         _notificationService = notificationService;
     }
 
-    [HttpPost("create")]
+    [HttpPost("api-notification/create")]
     public async ValueTask<ClientNotification> CreateAsync([FromBody] NotificationMessageDto dto)
     {
        return  await _notificationService.CreateClientNotificationMessagesAsync(dto.Message, dto.ClientId);
