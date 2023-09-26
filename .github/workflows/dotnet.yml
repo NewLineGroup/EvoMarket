@@ -15,3 +15,5 @@ jobs:
         run:  ls -la
       - name: Display dotnet version
         run: dotnet --version
+      - name: Shop Api
+        run: dotnet publish EvoMarket/EvoMarket.Shop.Api/EvoMarket.Shop.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Shop
