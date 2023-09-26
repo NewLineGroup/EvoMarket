@@ -11,5 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Display files
+        run:  ls -la
       - name: Display dotnet version
         run: dotnet --version
