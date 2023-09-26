@@ -21,6 +21,7 @@ jobs:
               dotnet publish EvoMarket/EvoMarket.Auth.Api/EvoMarket.Auth.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Auth
               dotnet publish EvoMarket/EvoMarket.Notification.Api/EvoMarket.Notification.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Notification
               dotnet publish EvoMarket/EvoMarket.Payment.Api/EvoMarket.Payment.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Payment
+              dotnet publish EvoMarket/EvoMarket.GateWay.Api/EvoMarket.GateWay.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/GateWay
       
   
     
