@@ -16,10 +16,11 @@ jobs:
       - name: Display dotnet version
         run: dotnet --version
       - name: Build
-      - run: dotnet publish EvoMarket/EvoMarket.Shop.Api/EvoMarket.Shop.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Shop
-      - run: dotnet publish EvoMarket/EvoMarket.Auth.Api/EvoMarket.Auth.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Auth
-      - run: dotnet publish EvoMarket/EvoMarket.Notification.Api/EvoMarket.Notification.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Notification
-      - run: dotnet publish EvoMarket/EvoMarket.Payment.Api/EvoMarket.Payment.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Payment
+        run: |
+              dotnet publish EvoMarket/EvoMarket.Shop.Api/EvoMarket.Shop.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Shop
+              dotnet publish EvoMarket/EvoMarket.Auth.Api/EvoMarket.Auth.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Auth
+              dotnet publish EvoMarket/EvoMarket.Notification.Api/EvoMarket.Notification.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Notification
+              dotnet publish EvoMarket/EvoMarket.Payment.Api/EvoMarket.Payment.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Payment
       
   
     
