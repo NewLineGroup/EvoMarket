@@ -5,8 +5,8 @@ on:
     branches: develop
 
 jobs:
-  build:
-
+  deploy:
+    
     runs-on: self-hosted
 
     steps:
@@ -15,5 +15,11 @@ jobs:
         run:  ls -la
       - name: Display dotnet version
         run: dotnet --version
-      - name: Shop Api
-        run: dotnet publish EvoMarket/EvoMarket.Shop.Api/EvoMarket.Shop.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Shop
+      - name: Build
+      - run: dotnet publish EvoMarket/EvoMarket.Shop.Api/EvoMarket.Shop.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Shop
+      - run: dotnet publish EvoMarket/EvoMarket.Auth.Api/EvoMarket.Auth.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Auth
+      - run: dotnet publish EvoMarket/EvoMarket.Notification.Api/EvoMarket.Notification.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Notification
+      - run: dotnet publish EvoMarket/EvoMarket.Payment.Api/EvoMarket.Payment.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Payment
+      
+  
+    
