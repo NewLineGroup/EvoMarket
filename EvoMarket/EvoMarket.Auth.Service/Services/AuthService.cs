@@ -57,7 +57,7 @@ public class AuthService : IAuthService
 
     public async ValueTask<bool> Login(UserDto userDto)
     {
-        var user = await UserRepository.GetUserByEmailPassword(userDto.Email, userDto.Otp);
+        var user = await UserRepository.GetUserByEmailPassword(userDto.Email, userDto.Password);
         var devices = await DeviceRepository.GetUserDevices(userDto.Id);
 
         if (user is not null)
