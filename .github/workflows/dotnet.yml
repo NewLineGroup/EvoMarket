@@ -17,6 +17,7 @@ jobs:
         run: dotnet --version
       - name: Build
         run: |
+              cd EvoMarket
               docker-compose down
               docker-compose up
       
