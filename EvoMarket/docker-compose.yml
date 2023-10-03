@@ -1,4 +1,5 @@
-﻿services:
+﻿version: "3.4"
+services:
   evomarket.shop.api:
     image: evomarket.shop.api
     build:
