@@ -16,10 +16,10 @@ jobs:
       - name: Display dotnet version
         run: dotnet --version
       - name: Build
-        working-directory: ./TCBApp
+        working-directory: ./EvoMarket
         run: docker-compose build
       - name: Deploy
-        working-directory: ./TCBApp
+        working-directory: ./EvoMarket
         run: |
               docker-compose down
               docker-compose up -d
