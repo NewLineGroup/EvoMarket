@@ -17,11 +17,8 @@ jobs:
         run: dotnet --version
       - name: Build
         run: |
-              dotnet publish EvoMarket/EvoMarket.Shop.Api/EvoMarket.Shop.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Shop
-              dotnet publish EvoMarket/EvoMarket.Auth.Api/EvoMarket.Auth.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Auth
-              dotnet publish EvoMarket/EvoMarket.Notification.Api/EvoMarket.Notification.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Notification
-              dotnet publish EvoMarket/EvoMarket.Payment.Api/EvoMarket.Payment.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/Payment
-              dotnet publish EvoMarket/EvoMarket.GateWay.Api/EvoMarket.GateWay.Api.csproj -c release -o /home/abmu/apps/EvoMarketAPI/GateWay
+              docker-compose down
+              docker-compose up
       
   
     
