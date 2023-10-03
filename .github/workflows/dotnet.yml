@@ -22,7 +22,7 @@ jobs:
         working-directory: ./EvoMarket
         run: |
               docker-compose down
-              docker-compose up
+              docker-compose up --no-attach
       
   
     
