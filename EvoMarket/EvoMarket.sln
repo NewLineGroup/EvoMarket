@@ -37,6 +37,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebMvc", "WebMvc", "{8339EB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoMarket.Client.MVC", "EvoMarket.Client.MVC\EvoMarket.Client.MVC.csproj", "{C8397F53-9FCA-4B20-A1CB-CCC55784D796}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B57E379-30BD-4395-AE34-4DF7DF6A0FE6}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

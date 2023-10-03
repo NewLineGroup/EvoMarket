@@ -21,7 +21,7 @@ builder.Host.ConfigureHostConfiguration(configurationBuilder =>
 
 
 builder.WebHost
-    .UseUrls("http://localhost:1211");
+    .UseUrls("http://*:1211");
 
 //add serilog 
 var logger = new LoggerConfiguration()

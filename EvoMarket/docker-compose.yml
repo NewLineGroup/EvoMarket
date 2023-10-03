@@ -1,0 +1,41 @@
+﻿services:
+  evomarket.shop.api:
+    image: evomarket.shop.api
+    build:
+      context: .
+      dockerfile: EvoMarket.Shop.Api/Dockerfile
+    ports:
+      - "2505:2505"
+  
+  evomarket.payment.api:
+    image: evomarket.payment.api
+    build:
+      context: .
+      dockerfile: EvoMarket.Payment.Api/Dockerfile
+    ports:
+      - "1211:1211"
+  
+  evomarket.notification.api:
+    image: evomarket.notification.api
+    build:
+      context: .
+      dockerfile: EvoMarket.Notification.Api/Dockerfile
+    ports:
+      - "5132:5132"
+  
+  evomarket.gateway.api:
+    image: evomarket.gateway.api
+    build:
+      context: .
+      dockerfile: EvoMarket.GateWay.Api/Dockerfile
+    restart: on-failure
+    ports:
+      - "12200:12200"
+  evomarket.auth.api:
+    image: evomarket.auth.api
+    build:
+      context: .
+      dockerfile: EvoMarket.Auth.Api/Dockerfile
+    ports:
+      - "1214:1214"
+    
