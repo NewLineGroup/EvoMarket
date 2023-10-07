@@ -97,7 +97,8 @@ builder.Services
 
 
 var app = builder.Build();
-app.UsePathBase("/evomarket-api.nl-group.uz/api-auth");
+app.UsePathBase("/api-auth");
+// /evomarket-api.nl-group.uz
 app.UseSwagger();
 app.UseSwaggerUI();
 
