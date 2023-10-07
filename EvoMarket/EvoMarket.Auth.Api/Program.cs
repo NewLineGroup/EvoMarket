@@ -89,10 +89,6 @@ app.UsePathBase("/api-auth");
 // /evomarket-api.nl-group.uz
 app.UseSwagger();
 app.UseSwaggerUI();
- //(options =>
-// {
-//        options.RoutePrefix = "/";
-// });
 
 
 app.UseHttpsRedirection();
