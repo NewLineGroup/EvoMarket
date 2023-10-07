@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EvoMarket.Auth.Api.Controllers;
 
 [Controller]
-[Route("/divece")]
+[Route("divece")]
 public class DeviceController : ControllerBase
 {
     private readonly IDeviceRepository _repository;
