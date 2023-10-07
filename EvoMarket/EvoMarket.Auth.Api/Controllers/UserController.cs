@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EvoMarket.Auth.Api.Controllers;
 
 [Controller]
-[Route("/api-auth/user")]
+[Route("user")]
 public class UserController : ControllerBase
 {
     private readonly IUserRepository _userRepository;

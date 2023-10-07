@@ -1,21 +1,9 @@
-using System.Net.Mail;
-using System.Runtime.CompilerServices;
 using System.Text;
 using EvoMarket.Auth.Api.Extensions;
-using EvoMarket.Auth.Service.Interfaces;
-using EvoMarket.Auth.Service.Interfaces.ServiceInterfaces;
-using EvoMarket.Auth.Service.Services;
-using EvoMarket.Notification.Infrastructures.Interfaces;
-using EvoMarket.Notification.Infrastructures.Repositories;
-using EvoMarket.Notification.Services.Interfaces;
-using EvoMarket.Notification.Services.Services;
-using EvoMarket.Shop.Service.Interfaces;
-using EvoMarket.Shop.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Shop.Interfaces;
-using Shop.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
