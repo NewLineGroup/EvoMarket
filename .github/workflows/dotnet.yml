@@ -17,7 +17,7 @@ jobs:
         run: dotnet --version
       - name: Build
         working-directory: ./EvoMarket
-        run: docker-compose build
+        run: docker-compose build --no-cache  
       - name: Deploy
         working-directory: ./EvoMarket
         run: |
