@@ -87,7 +87,13 @@ builder.Services
 var app = builder.Build();
 app.UsePathBase("/api-auth");
 // /evomarket-api.nl-group.uz
-app.UseSwagger();
+app.UseSwagger(c =>
+{
+    c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
+    {
+        swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"/api-auth" } };
+    });
+});
 app.UseSwaggerUI();
 
 
