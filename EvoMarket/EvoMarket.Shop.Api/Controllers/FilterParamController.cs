@@ -7,7 +7,7 @@ using Shop.Interfaces;
 
 namespace EvoMarket.Shop.Api.Controllers;
 [ApiController]
-[Route("api-shop/filterparams")]
+[Route("filterparams")]
 public class FilterParamController:MyControllerBase<FilterParam>
 {
     private readonly IFilterParamRepository _repository;

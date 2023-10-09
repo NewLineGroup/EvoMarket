@@ -8,7 +8,7 @@ using Shop.Interfaces;
 
 namespace EvoMarket.Shop.Api.Controllers;
 [ApiController]
-[Route("api-shop/categoryfilters")]
+[Route("categoryfilters")]
 public class CategoryFilterController:MyControllerBase<CategoryFilter>
 {
     private readonly ICategoryFilterRepository _repository;

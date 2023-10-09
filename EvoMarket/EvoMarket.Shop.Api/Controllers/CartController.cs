@@ -9,7 +9,7 @@ using Shop.Interfaces;
 namespace EvoMarket.Shop.Api.Controllers;
 
 [ApiController]
-[Route("api-shop/carts")]
+[Route("carts")]
 public class CartController : MyControllerBase<Cart>
 {
     private readonly ICartRepository _repository;
