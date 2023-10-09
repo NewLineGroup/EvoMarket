@@ -1,6 +1,7 @@
 using EvoMarket.Infrastructure.DbContexts;
 using EvoMarket.Shop.Api.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,13 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 app.UsePathBase("/api-notification");
 // Configure the HTTP request pipeline.
-app.UseSwagger();
+app.UseSwagger(c =>
+{
+    c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
+    {
+        swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"/api-notification" } };
+    });
+});
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
