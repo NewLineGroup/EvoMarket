@@ -1,4 +1,5 @@
 using EvoMarket.Shop.Api.Extensions;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,13 @@ app.UsePathBase("/api-shop");
 // Configure the HTTP request pipeline.
 
 
-app.UseSwagger();
+app.UseSwagger(c =>
+{
+ c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
+ {
+  swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer{Url = $"/api-shop"}};
+ });
+});
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
