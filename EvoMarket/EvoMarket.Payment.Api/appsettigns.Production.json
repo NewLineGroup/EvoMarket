@@ -1,4 +1,7 @@
 {
+  "ConnectionStrings": {
+    "DefaultConnectionString": "Host=213.230.65.55; Port=5444; Database=shop; username=evomarket; password=evomarket;"
+  },
   "Logging": {
     "LogLevel": {
       "Default": "Information",
