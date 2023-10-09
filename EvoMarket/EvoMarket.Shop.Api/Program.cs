@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
-app.UsePathBase(new PathString("/api-shop"));
+app.UsePathBase("/api-shop");
 // Configure the HTTP request pipeline.
 
 
