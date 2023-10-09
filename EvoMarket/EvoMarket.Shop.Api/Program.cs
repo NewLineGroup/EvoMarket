@@ -29,7 +29,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-// app.MapControllers();
-app.MapControllerRoute("Default", "/api-shop/{controller}/{action}");
+ app.MapControllers();
+//app.MapControllerRoute("Default", "/api-shop/{controller}/{action}");
 
 app.Run();
