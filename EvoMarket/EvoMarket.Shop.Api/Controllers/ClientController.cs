@@ -9,7 +9,7 @@ using Shop.Interfaces;
 namespace EvoMarket.Shop.Api.Controllers;
 
 [ApiController]
-[Route("api-shop/clients")]
+[Route("clients")]
 public class ClientController:MyControllerBase<Client>
 {
     private readonly IClientRepository _repository;
