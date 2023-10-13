@@ -30,13 +30,6 @@ app.UseSwagger(c =>
   swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer{Url = $"/api-shop"}};
  });
 });
-app.UseSwagger(c =>
-{
- c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
- {
-  swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"/api-shop" } };
- });
-});
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
