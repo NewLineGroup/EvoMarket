@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using Domain.Entities.Auth;
 using Domain.Entities.Notification;
+using Domain.Entities.Payment;
 using Domain.Entities.Shops;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,8 @@ public class DataContext : DbContext
     public DbSet<FilterParam> FilterParams { get; set; }
     public DbSet<FilterParamValue> FilterParamValues { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<ClientAccount> ClientAccounts { get; set; }
+    public DbSet<Transaction> Transactions { get; set; }
 
 
     public DataContext()
@@ -37,47 +40,7 @@ public class DataContext : DbContext
         {
             // Configure the database provider here
             optionsBuilder.UseNpgsql(
-                "Host=213.230.65.55; Port=5444; Database=shop; username=evomarket; password=evomarket;");
+                "Host=213.230.65.55; Port=5444; Database=shop; username=postgres; password=159357Dax;");
         }
     }
-
-
-    /*
-     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        
-        modelBuilder.Entity<ClientNotification>()
-            .HasIndex(x => x.Received);
-
-        modelBuilder.Entity<User>()
-            .Property(u => u.Id)
-            .HasColumnName("user_id")
-            .IsRequired();
-
-        modelBuilder.Entity<User>()
-            .HasIndex(x => x.Id)
-            .IsUnique();
-
-        modelBuilder.Entity<Device>()
-            .Property(x => x.Id)
-            .HasColumnName("device_id")
-            .IsRequired();
-
-        modelBuilder.Entity<Device>()
-            .Property(x => x.UserId)
-            .IsRequired();
-
-        modelBuilder.Entity<Device>()
-            .HasKey(x => x.UserId)
-            .HasName("user_id");
-
-        modelBuilder.Entity<Device>()
-            .HasIndex(x => x.Id)
-            .IsUnique();
-        
-        
-        base.OnModelCreating(modelBuilder);
-    }
-    */
 }
