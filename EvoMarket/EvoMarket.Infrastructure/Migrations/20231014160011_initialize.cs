@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EvoMarket.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,13 +17,13 @@ namespace EvoMarket.Infrastructure.Migrations
                 name: "shop");
 
             migrationBuilder.EnsureSchema(
-                name: "payment");
-
-            migrationBuilder.EnsureSchema(
                 name: "notification");
 
             migrationBuilder.EnsureSchema(
                 name: "auth");
+
+            migrationBuilder.EnsureSchema(
+                name: "payment");
 
             migrationBuilder.CreateTable(
                 name: "client_notifications",
@@ -70,63 +70,18 @@ namespace EvoMarket.Infrastructure.Migrations
                 schema: "auth",
                 columns: table => new
                 {
-                    user_id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    user_id = table.Column<int>(type: "integer", nullable: false),
                     ip = table.Column<string>(type: "text", nullable: false),
                     device_name = table.Column<string>(type: "text", nullable: false),
                     last_login_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    device_id = table.Column<long>(type: "bigint", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("user_id", x => x.user_id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "users",
-                schema: "auth",
-                columns: table => new
-                {
-                    user_id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    email = table.Column<string>(type: "text", nullable: false),
-                    password_hash_string = table.Column<string>(type: "text", nullable: false),
-                    client_id = table.Column<int>(type: "integer", nullable: false),
-                    otp = table.Column<string>(type: "text", nullable: true),
-                    expire_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_users", x => x.user_id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "client_account",
-                schema: "payment",
-                columns: table => new
-                {
-                    id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    balance = table.Column<decimal>(type: "numeric", nullable: false),
-                    is_freeze = table.Column<bool>(type: "boolean", nullable: false),
-                    client_id = table.Column<long>(type: "bigint", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_client_account", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_client_account_clients_client_id",
-                        column: x => x.client_id,
-                        principalSchema: "shop",
-                        principalTable: "clients",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_devices", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,13 +101,26 @@ namespace EvoMarket.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_transactions", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_transactions_client_account_account_id",
-                        column: x => x.account_id,
-                        principalSchema: "payment",
-                        principalTable: "client_account",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "users",
+                schema: "auth",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    email = table.Column<string>(type: "text", nullable: false),
+                    password_hash_string = table.Column<string>(type: "text", nullable: false),
+                    client_id = table.Column<int>(type: "integer", nullable: false),
+                    otp = table.Column<string>(type: "text", nullable: true),
+                    expire_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_users", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -379,25 +347,6 @@ namespace EvoMarket.Infrastructure.Migrations
                 column: "category_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_client_account_client_id",
-                schema: "payment",
-                table: "client_account",
-                column: "client_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_client_notifications_received",
-                schema: "notification",
-                table: "client_notifications",
-                column: "received");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_devices_device_id",
-                schema: "auth",
-                table: "devices",
-                column: "device_id",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_filter_param_values_CategoryFilterId",
                 schema: "shop",
                 table: "filter_param_values",
@@ -426,19 +375,6 @@ namespace EvoMarket.Infrastructure.Migrations
                 schema: "shop",
                 table: "products",
                 column: "category_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_transactions_account_id",
-                schema: "payment",
-                table: "transactions",
-                column: "account_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_users_user_id",
-                schema: "auth",
-                table: "users",
-                column: "user_id",
-                unique: true);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_cart_items_products_product_id",
@@ -494,16 +430,12 @@ namespace EvoMarket.Infrastructure.Migrations
                 schema: "shop");
 
             migrationBuilder.DropTable(
-                name: "transactions",
-                schema: "payment");
-
-            migrationBuilder.DropTable(
-                name: "client_account",
-                schema: "payment");
-
-            migrationBuilder.DropTable(
                 name: "clients",
                 schema: "shop");
+
+            migrationBuilder.DropTable(
+                name: "transactions",
+                schema: "payment");
 
             migrationBuilder.DropTable(
                 name: "products",
