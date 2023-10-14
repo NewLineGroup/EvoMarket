@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Dto.Payment.AccountDto;
 using Domain.Entities.Payment;
 using Domain.Entities.Shops;
 
@@ -22,6 +23,24 @@ public class ClientAccountController : ControllerBase
         this._clientAccountRepository = clientAccountRepository;
     }
 
+    [HttpPost("CreatClientAccount")]
+    public async Task<ApiResult<ClientAccount>> CreateClient([FromBody] ClientAccountCreateDto client)
+    {
+        var result = await _clientAccountRepository.CreatAsync(new ClientAccount()
+        {
+            ClientId = client.ClientId,
+            Balance = client.Money,
+            CreatedAt = DateTime.Now,
+            UpdatedAt = DateTime.Now,
+            IsFreeze = false
+        });
+        if (result is not null)
+        {
+            return result;
+        }
+
+        return ("Client not Created", 500);
+    }
     [HttpGet("GetClientAccount")]
     public async Task<ApiResult<ClientAccount>> GetClient([FromQuery] long id)
     {
