@@ -6,6 +6,6 @@ public class ClientAccountCreateDto
 {
     public bool is_Freeze { get; set; }
     public long ClientId { get; set; }
-    public long ClientAccountId { get; set; }
+
     public decimal Money { get; set; }
 }
