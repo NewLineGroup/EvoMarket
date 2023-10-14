@@ -22,6 +22,7 @@ public static class ConfigureExtension
     {
         // repositories
         serviceCollection.AddScoped<ICartRepository, CartRepository>();
+        serviceCollection.AddScoped<ICartItemRepository, CartItemRepository>();
         serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
         serviceCollection.AddScoped<ICategoryFilterRepository, CategoryFilterRepository>();
         serviceCollection.AddScoped<IClientRepository, ClientRepository>();
@@ -31,6 +32,7 @@ public static class ConfigureExtension
         
         //services
         serviceCollection.AddScoped<ICartService, CartService>();
+        serviceCollection.AddScoped<ICartItemService, CartItemService>();
         serviceCollection.AddScoped<ICategoryFilterService, CategoryFilterService>();
         serviceCollection.AddScoped<ICategoryService, CategoryService>();
         serviceCollection.AddScoped<IClientService, ClientService>();
