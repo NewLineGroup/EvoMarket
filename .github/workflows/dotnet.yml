@@ -14,7 +14,7 @@ jobs:
       # - name: Display files
       #   run:  ls -la
       - name: Display dotnet version
-        run: dotnet --version
+      #  run: dotnet --version
       - name: Build
         working-directory: ./EvoMarket
         run: docker-compose build
