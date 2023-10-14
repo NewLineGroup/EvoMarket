@@ -22,7 +22,7 @@ public class ClientAccountService:IClientAccountService
     }
 
 
-    public async ValueTask<TransactionUpdateDto> TransferToTheBalanceAsync(ClientAccountCreateDto account)
+    public async ValueTask<TransactionUpdateDto> TransferToTheBalanceAsync(ClientAccountGetByIdDto account)
     {
         var result = new Transaction()
         {
