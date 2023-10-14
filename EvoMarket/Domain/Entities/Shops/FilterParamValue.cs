@@ -6,7 +6,7 @@ namespace Domain.Entities.Shops;
 public class FilterParamValue : ModelBase
 {
     public List<Category> Categories { get; set; }
-    [Column("filter_param_id")] public long FilterParamId { get; set; }
+    [Column("filter_param_id"),ForeignKey("FilterParam")] public long FilterParamId { get; set; }
     public FilterParam FilterParam { get; set; }
     [Column("value")] public string Value { get; set; }
 }

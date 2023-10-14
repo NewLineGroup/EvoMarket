@@ -14,7 +14,8 @@ public class CartService : ServiceBase<Cart>, ICartService
     public async ValueTask<Cart> CreatAsync(CartCreateDto data)
     {
         Cart cart = new Cart()
-        {
+        { 
+            TransactionId = data.TransactionId,
             TotalAmount = data.TotalAmount,
             TotalCount = data.TotalCount,
             ClientId = data.ClientId
