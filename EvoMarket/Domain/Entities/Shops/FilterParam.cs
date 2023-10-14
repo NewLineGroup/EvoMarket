@@ -6,5 +6,5 @@ namespace Domain.Entities.Shops;
 public class FilterParam : ModelBase
 {
     [Column("param_name")] public string ParamName { get; set; }
-    public List<string> ParamValues { get; set; }
+   // public List<string> ParamValues { get; set; }
 }
