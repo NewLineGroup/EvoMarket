@@ -1,4 +1,3 @@
-
 using EvoMarket.Infrastructure.DbContexts;
 using EvoMarket.Shop.Service.Interfaces;
 using EvoMarket.Shop.Service.Services;
@@ -38,7 +37,5 @@ public static class ConfigureExtension
         serviceCollection.AddScoped<IFilterParamService, FilterParamService>();
         serviceCollection.AddScoped<IFilterParamValueService, FilterParamValueService>();
         serviceCollection.AddScoped<IProductService, ProductService>();
-        
-        
     }
 }
