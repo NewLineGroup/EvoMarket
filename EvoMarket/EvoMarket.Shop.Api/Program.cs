@@ -20,21 +20,19 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 app.UsePathBase("/api-shop");
-// Configure the HTTP request pipeline.
-
-
+// /evomarket-api.nl-group.uz
 app.UseSwagger(c =>
 {
  c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
  {
-  swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer{Url = $"/api-shop"}};
+  swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"/api-shop" } };
  });
 });
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
  app.MapControllers();
-//app.MapControllerRoute("Default", "/api-shop/{controller}/{action}");
 
 app.Run();
