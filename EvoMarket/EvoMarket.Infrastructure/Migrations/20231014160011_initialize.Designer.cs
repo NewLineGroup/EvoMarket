@@ -13,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EvoMarket.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230926190012_AlterAuth")]
-    partial class AlterAuth
+    [Migration("20231014160011_initialize")]
+    partial class initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,12 +28,12 @@ namespace EvoMarket.Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Auth.Device", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("user_id");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone")
@@ -43,10 +43,6 @@ namespace EvoMarket.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("device_name");
-
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint")
-                        .HasColumnName("device_id");
 
                     b.Property<string>("Ip")
                         .IsRequired()
@@ -61,11 +57,11 @@ namespace EvoMarket.Infrastructure.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
-                    b.HasKey("UserId")
-                        .HasName("user_id");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("user_id");
 
-                    b.HasIndex("Id")
-                        .IsUnique();
+                    b.HasKey("Id");
 
                     b.ToTable("devices", "auth");
                 });
@@ -75,7 +71,7 @@ namespace EvoMarket.Infrastructure.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasColumnName("user_id");
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
@@ -110,9 +106,6 @@ namespace EvoMarket.Infrastructure.Migrations
                         .HasColumnName("updated_at");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Id")
-                        .IsUnique();
 
                     b.ToTable("users", "auth");
                 });
@@ -149,45 +142,7 @@ namespace EvoMarket.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Received");
-
                     b.ToTable("client_notifications", "notification");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Payment.ClientAccount", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("numeric")
-                        .HasColumnName("balance");
-
-                    b.Property<long>("ClientId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("client_id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("created_at");
-
-                    b.Property<bool>("IsFreeze")
-                        .HasColumnType("boolean")
-                        .HasColumnName("is_freeze");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("updated_at");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("client_account", "payment");
                 });
 
             modelBuilder.Entity("Domain.Entities.Payment.Transaction", b =>
@@ -224,8 +179,6 @@ namespace EvoMarket.Infrastructure.Migrations
                         .HasColumnName("updated_at");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
 
                     b.ToTable("transactions", "payment");
                 });
@@ -552,28 +505,6 @@ namespace EvoMarket.Infrastructure.Migrations
                     b.ToTable("products", "shop");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Payment.ClientAccount", b =>
-                {
-                    b.HasOne("Domain.Entities.Shops.Client", "Client")
-                        .WithMany("ClientAccounts")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Payment.Transaction", b =>
-                {
-                    b.HasOne("Domain.Entities.Payment.ClientAccount", "Account")
-                        .WithMany("Transactions")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
             modelBuilder.Entity("Domain.Entities.Shops.Cart", b =>
                 {
                     b.HasOne("Domain.Entities.Shops.Client", "Client")
@@ -667,11 +598,6 @@ namespace EvoMarket.Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Payment.ClientAccount", b =>
-                {
-                    b.Navigation("Transactions");
-                });
-
             modelBuilder.Entity("Domain.Entities.Shops.Cart", b =>
                 {
                     b.Navigation("CartItems");
@@ -689,17 +615,15 @@ namespace EvoMarket.Infrastructure.Migrations
                     b.Navigation("FilterParamValues");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Shops.Client", b =>
-                {
-                    b.Navigation("ClientAccounts");
-                });
-
             modelBuilder.Entity("Domain.Entities.Shops.FilterParamValue", b =>
                 {
                     b.Navigation("Categories");
                 });
 
-          
+            modelBuilder.Entity("Domain.Entities.Shops.Product", b =>
+                {
+                    b.Navigation("FilterParamValues");
+                });
 #pragma warning restore 612, 618
         }
     }

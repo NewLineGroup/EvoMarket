@@ -30,9 +30,20 @@ public class DataContext : DbContext
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
-    
-    
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            // Configure the database provider here
+            optionsBuilder.UseNpgsql(
+                "Host=213.230.65.55; Port=5444; Database=shop; username=evomarket; password=evomarket;");
+        }
+    }
+
+
+    /*
+     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         
@@ -68,5 +79,5 @@ public class DataContext : DbContext
         
         base.OnModelCreating(modelBuilder);
     }
-    
+    */
 }
