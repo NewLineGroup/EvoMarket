@@ -27,11 +27,8 @@ jobs:
         password: ${{ secrets.AzureAppService_ContainerPassword_9826cdb7550a4509b260eec18f2ac7ea }}
 
     - name: Build and push container image to registry
-      uses: docker/build-push-action@v3
-      with:
-        push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6fbb128abd314a27b214963d2a19b8cc }}/evomarket:${{ github.sha }}
-        file: ./EvoMarket/EvoMarket.Notification.Api/Dockerfile
+      working-directory: ./EvoMarket
+      run: docker-compose -f build --no-cache --parallel
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,10 +39,5 @@ jobs:
 
     steps:
     - name: Deploy to Azure Web App
-      id: deploy-to-webapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'EvoMarket-Docker'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b91411f6c7354c3dbfb4df47d56129e1 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6fbb128abd314a27b214963d2a19b8cc }}/evomarket:${{ github.sha }}'
+      working-directory: ./EvoMarket
+      run: docker-compose push
