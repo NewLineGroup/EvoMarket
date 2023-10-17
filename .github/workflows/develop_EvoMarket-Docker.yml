@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6fbb128abd314a27b214963d2a19b8cc }}/EvoMarket:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6fbb128abd314a27b214963d2a19b8cc }}/evomarket:${{ github.sha }}
         file: ./EvoMarket.Notification.Api/Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'EvoMarket-Docker'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_b91411f6c7354c3dbfb4df47d56129e1 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6fbb128abd314a27b214963d2a19b8cc }}/EvoMarket:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6fbb128abd314a27b214963d2a19b8cc }}/evomarket:${{ github.sha }}'
