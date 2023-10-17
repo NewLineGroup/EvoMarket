@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6fbb128abd314a27b214963d2a19b8cc }}/evomarket:${{ github.sha }}
-        file: ./EvoMarket.Notification.Api/Dockerfile
+        file: ./EvoMarket/EvoMarket.Notification.Api/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
