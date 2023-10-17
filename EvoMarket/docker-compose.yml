@@ -1,7 +1,7 @@
 ﻿version: "3.4"
 services:
   evomarket.shop.api:
-    image: evomarket.shop.api
+    image: azimjon2000/evomarket.shop.api:latest
     build:
       context: .
       dockerfile: EvoMarket.Shop.Api/Dockerfile
@@ -9,7 +9,7 @@ services:
       - "2505:2505"
   
   evomarket.payment.api:
-    image: evomarket.payment.api
+    image: azimjon2000/evomarket.payment.api:latest
     build:
       context: .
       dockerfile: EvoMarket.Payment.Api/Dockerfile
@@ -17,7 +17,7 @@ services:
       - "1211:1211"
   
   evomarket.notification.api:
-    image: evomarket.notification.api
+    image: azimjon2000/evomarket.notification.api:latest
     build:
       context: .
       dockerfile: EvoMarket.Notification.Api/Dockerfile
@@ -25,7 +25,7 @@ services:
       - "5132:5132"
   
   evomarket.gateway.api:
-    image: evomarket.gateway.api
+    image: azimjon2000/evomarket.gateway.api:latest
     build:
       context: .
       dockerfile: EvoMarket.GateWay.Api/Dockerfile
@@ -33,7 +33,7 @@ services:
     ports:
       - "12200:12200"
   evomarket.auth.api:
-    image: evomarket.auth.api
+    image: azimjon2000/evomarket.auth.api:latest
     build:
       context: .
       dockerfile: EvoMarket.Auth.Api/Dockerfile
