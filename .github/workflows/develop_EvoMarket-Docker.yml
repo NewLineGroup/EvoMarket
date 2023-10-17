@@ -28,7 +28,7 @@ jobs:
 
     - name: Build and push container image to registry
       working-directory: ./EvoMarket
-      run: docker-compose -f build --no-cache --parallel
+      run: docker-compose build --no-cache --parallel
 
   deploy:
     runs-on: ubuntu-latest
