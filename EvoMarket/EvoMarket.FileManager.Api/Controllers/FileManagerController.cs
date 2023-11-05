@@ -17,7 +17,7 @@ public class FileManagerController : ControllerBase
     {
         string fileName = $"{Guid.NewGuid().ToString()}{Path.GetExtension(uploadDto.File.FileName)}";
 
-        FileStream stream = new FileStream(Path.Combine(this._webHostEnvironment.WebRootPath, fileName),
+        FileStream stream = new FileStream(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", fileName),
             FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
 
         await uploadDto.File.CopyToAsync(stream);
