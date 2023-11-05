@@ -7,6 +7,13 @@ builder
     .WebHost
     .UseUrls(builder.Configuration.GetValue<string>("LaunchUrl"));
 
+builder
+    .WebHost
+    .ConfigureKestrel(options =>
+    {
+        options.Limits.MaxRequestBodySize = null;
+    });
+
 // Add services to the container.
 
 builder.Services.AddControllers();
