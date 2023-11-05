@@ -39,4 +39,11 @@ services:
       dockerfile: EvoMarket.Auth.Api/Dockerfile
     ports:
       - "1214:1214"
+  evomarket.filemanager.api:
+    image: azimjon2000/evomarket.auth.api:latest
+    build:
+      context: .
+      dockerfile: EvoMarket.FileManager.Api/Dockerfile
+    ports:
+      - "12203:12203"
     
